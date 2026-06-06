@@ -4,11 +4,11 @@ import { useState, useEffect } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
 
 const links = [
-  { name: "Home",        href: "#home" },
-  { name: "About",       href: "#about" },
-  { name: "Services",    href: "#services" },
-  { name: "Portfolio",   href: "#portfolio" },
-  { name: "Contact",     href: "#contact" },
+  { name: "Home",        href: "/" },
+  { name: "About",       href: "/about" },
+  { name: "Services",    href: "/services" },
+  { name: "Portfolio",   href: "/portfolio" },
+  { name: "Contact",     href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -90,7 +90,7 @@ export default function Navbar() {
 
       {/* Mobile drawer */}
       {open && (
-        <div className="fixed inset-0 z-40 lg:hidden">
+        <div className="fixed inset-0 z-[60] lg:hidden">
           {/* Backdrop */}
           <div
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"

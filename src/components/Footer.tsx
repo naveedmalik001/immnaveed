@@ -24,21 +24,20 @@ function LinkedinIcon({ className }: { className?: string }) {
 }
 
 const nav = [
-  { name: "Home",       href: "#home"        },
-  { name: "About",      href: "#about"       },
-  { name: "Services",   href: "#services"    },
-  { name: "Portfolio",  href: "#portfolio"   },
-  { name: "Contact",    href: "#contact"     },
+  { name: "Home",       href: "/"        },
+  { name: "About",      href: "/about"       },
+  { name: "Services",   href: "/services"    },
+  { name: "Portfolio",  href: "/portfolio"   },
+  { name: "Contact",    href: "/contact"     },
 ];
 
 const svcs = [
-  "Corporate Branding",
-  "Performance Marketing",
-  "Meta Ads Scaling",
-  "Website Development",
-  "ERP Systems",
-  "Social Media Mgmt",
-  "Startup Consulting",
+  { name: "Corporate Branding", slug: "brand-development" },
+  { name: "Meta Ads Scaling", slug: "meta-ads-marketing" },
+  { name: "Website Development", slug: "website-development" },
+  { name: "ERP Systems", slug: "erp-development" },
+  { name: "Social Media Mgmt", slug: "social-media-management" },
+  { name: "Startup Consulting", slug: "startup-friendly" },
 ];
 
 export default function Footer() {
@@ -64,7 +63,7 @@ export default function Footer() {
             </div>
             <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 flex-shrink-0">
               <a
-                href="#contact"
+                href="/contact"
                 className="inline-flex items-center justify-center gap-2 bg-brand-orange text-white font-bold text-sm px-5 sm:px-6 py-3 sm:py-3.5 rounded-full hover:bg-orange-600 transition-colors shadow-lg shadow-orange-900/30"
               >
                 Book Free Strategy Call <ArrowRight className="w-4 h-4" />
@@ -88,7 +87,7 @@ export default function Footer() {
 
           {/* Brand col */}
           <div className="sm:col-span-2 lg:col-span-2">
-            <a href="#home" className="inline-flex flex-col mb-4 sm:mb-5">
+            <a href="/" className="inline-flex flex-col mb-4 sm:mb-5">
               <span className="text-xl font-black tracking-tight text-white leading-none">
                 IMM<span className="text-brand-orange">NAVEED</span>
               </span>
@@ -142,9 +141,9 @@ export default function Footer() {
             <h4 className="text-[9px] font-black text-neutral-500 uppercase tracking-widest mb-3 sm:mb-4">Services</h4>
             <ul className="space-y-2.5">
               {svcs.map(s => (
-                <li key={s}>
-                  <a href="#services" className="text-xs text-neutral-500 hover:text-brand-orange transition-colors font-medium">
-                    {s}
+                <li key={s.slug}>
+                  <a href={`/services/${s.slug}`} className="text-xs text-neutral-500 hover:text-brand-orange transition-colors font-medium">
+                    {s.name}
                   </a>
                 </li>
               ))}

@@ -71,8 +71,8 @@ function HeroGraphic() {
               ))}
             </div>
             <div className="flex justify-between mt-1.5">
-              {["J","F","M","A","M","J","J","A","S","O","N","D"].map(m => (
-                <span key={m} className="text-[7px] text-neutral-400 font-medium">{m}</span>
+              {["J","F","M","A","M","J","J","A","S","O","N","D"].map((m, i) => (
+                <span key={`${m}-${i}`} className="text-[7px] text-neutral-400 font-medium">{m}</span>
               ))}
             </div>
           </div>

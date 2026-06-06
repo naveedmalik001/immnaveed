@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import FloatingContact from "@/components/FloatingContact";
 import "./globals.css";
 
 const inter = Inter({
@@ -49,6 +50,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" className={inter.variable}>
       <body className="font-sans bg-white text-brand-black antialiased min-h-screen">
         {children}
+        <FloatingContact />
       </body>
     </html>
   );
