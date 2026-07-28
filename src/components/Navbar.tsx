@@ -1,30 +1,31 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import { useSound } from "@/hooks/useSound";
 
 const links = [
-  { name: "Home",        href: "#home" },
-  { name: "About",       href: "#about" },
-  { name: "Services",    href: "#services" },
-  { name: "Portfolio",   href: "#portfolio" },
-  { name: "Contact",     href: "#contact" },
+  { name: "Services",     href: "/services" },
+  { name: "Case Studies", href: "/case-studies" },
+  { name: "Industries",   href: "/industries" },
+  { name: "Process",      href: "/process" },
+  { name: "About",        href: "/about" },
+  { name: "Contact",      href: "/contact" },
 ];
 
-// Beautiful custom inline SVG logo mark
-function LogoIcon() {
+function BrandMark() {
   return (
-    <svg className="w-8 h-8 text-brand-orange" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M4 20V8L12 15L20 8V20" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M12 4V12" stroke="#0f0f0f" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M8 8L12 4L16 8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+    <svg className="w-7 h-7 text-amber-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 20V8L12 15L20 8V20" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 4V12" stroke="#fafafa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M8 8L12 4L16 8" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 
 export default function Navbar() {
-  const [open, setOpen]       = useState(false);
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { playClick, playHover } = useSound();
 
@@ -34,7 +35,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when menu open
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -44,151 +44,148 @@ export default function Navbar() {
     <>
       <header
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-          scrolled ? "bg-white/80 backdrop-blur-md shadow-lg shadow-black/5 border-b border-neutral-100" : "bg-transparent"
+          scrolled
+            ? "bg-zinc-950/85 backdrop-blur-md border-b border-zinc-800/80 shadow-2xl shadow-black/80"
+            : "bg-transparent"
         }`}
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-
-          {/* Logo Brand Link */}
-          <a 
-            href="#home" 
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+          {/* Logo Brand */}
+          <Link
+            href="/"
             onClick={playClick}
             onMouseEnter={playHover}
-            className="flex items-center gap-2.5 group select-none cursor-pointer"
+            className="flex items-center gap-3 group cursor-pointer"
           >
-            <div className="p-1 rounded-xl bg-orange-50 group-hover:scale-110 transition-transform duration-300">
-              <LogoIcon />
+            <div className="p-1.5 rounded-xl bg-amber-500/10 border border-amber-500/20 group-hover:border-amber-500/50 transition-all">
+              <BrandMark />
             </div>
             <div className="flex flex-col leading-none">
-              <span className="text-xl font-black tracking-tight text-brand-black">
-                IMM<span className="text-brand-orange">NAVEED</span>
+              <span className="text-lg font-black tracking-tight text-white">
+                IMM<span className="text-amber-500">NAVEED</span>
               </span>
-              <span className="text-[8.5px] font-black text-neutral-400 uppercase tracking-widest mt-0.5">
-                Digital Growth Agency
+              <span className="text-[8px] font-black text-zinc-400 uppercase tracking-widest mt-0.5">
+                Digital Consultancy
               </span>
             </div>
-          </a>
+          </Link>
 
-          {/* Desktop nav */}
+          {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-8">
-            {links.map(l => (
-              <a
+            {links.map((l) => (
+              <Link
                 key={l.name}
                 href={l.href}
                 onClick={playClick}
                 onMouseEnter={playHover}
-                className="text-sm font-bold text-neutral-600 hover:text-brand-orange transition-colors duration-200"
+                className="text-xs font-black uppercase tracking-widest text-zinc-400 hover:text-amber-400 transition-colors"
               >
                 {l.name}
-              </a>
+              </Link>
             ))}
           </nav>
 
-          {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-5">
+          {/* Desktop Call Action */}
+          <div className="hidden lg:flex items-center gap-4">
             <a
               href="https://wa.me/919018636473"
               target="_blank"
               rel="noopener noreferrer"
               onClick={playClick}
               onMouseEnter={playHover}
-              className="text-sm font-black text-neutral-600 hover:text-[#25D366] transition-colors"
+              className="text-xs font-black uppercase tracking-widest text-zinc-300 hover:text-[#25D366] transition-colors"
             >
               WhatsApp
             </a>
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               onClick={playClick}
               onMouseEnter={playHover}
-              className="inline-flex items-center gap-2 bg-brand-black hover:bg-brand-orange text-white text-sm font-black px-6 py-3 rounded-full transition-all duration-300 shadow-lg shadow-neutral-900/10 hover:shadow-orange-500/20"
+              className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-black text-xs font-black uppercase tracking-widest px-5 py-2.5 rounded-full transition-all shadow-lg shadow-amber-500/15"
             >
-              Free Strategy Call <ArrowRight className="w-4 h-4" />
-            </a>
+              <span>Book Strategy Call</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
 
-          {/* Mobile hamburger */}
+          {/* Mobile Menu Toggle */}
           <button
             onClick={() => {
               playClick();
               setOpen(!open);
             }}
-            aria-label="Menu"
-            className="lg:hidden w-11 h-11 flex items-center justify-center rounded-xl border border-neutral-200 bg-white text-brand-black hover:scale-105 transition-transform"
+            aria-label="Toggle Navigation Menu"
+            className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900 text-white"
           >
             {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </header>
 
-      {/* Mobile drawer */}
+      {/* Mobile Menu Overlay */}
       {open && (
         <div className="fixed inset-0 z-[60] lg:hidden">
-          {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
             onClick={() => {
               playClick();
               setOpen(false);
             }}
           />
-          {/* Panel */}
-          <div className="absolute top-0 right-0 bottom-0 w-80 bg-white flex flex-col shadow-2xl">
-            <div className="flex items-center justify-between px-6 h-20 border-b border-neutral-100">
-              <div className="flex items-center gap-2">
-                <LogoIcon />
-                <span className="text-lg font-black text-brand-black">
-                  IMM<span className="text-brand-orange">NAVEED</span>
+          <div className="absolute top-0 right-0 bottom-0 w-80 bg-zinc-950 border-l border-zinc-800 flex flex-col p-6 shadow-2xl">
+            <div className="flex items-center justify-between pb-6 border-b border-zinc-800">
+              <div className="flex items-center gap-2.5">
+                <BrandMark />
+                <span className="text-base font-black text-white">
+                  IMM<span className="text-amber-500">NAVEED</span>
                 </span>
               </div>
-              <button 
+              <button
                 onClick={() => {
                   playClick();
                   setOpen(false);
-                }} 
-                className="p-2.5 rounded-xl hover:bg-neutral-100 transition-colors"
+                }}
+                className="p-2 rounded-lg bg-zinc-900 text-zinc-400 hover:text-white"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <nav className="flex-1 px-5 py-8 space-y-1 overflow-y-auto">
-              {links.map((l, i) => (
-                <a
+            <nav className="flex-1 py-8 space-y-2">
+              {links.map((l) => (
+                <Link
                   key={l.name}
                   href={l.href}
                   onClick={() => {
                     playClick();
                     setOpen(false);
                   }}
-                  onMouseEnter={playHover}
-                  className="flex items-center justify-between px-4 py-4 rounded-2xl text-base font-bold text-neutral-700 hover:bg-orange-50 hover:text-brand-orange transition-all group"
-                  style={{ animationDelay: `${i * 50}ms` }}
+                  className="block px-4 py-3.5 rounded-xl text-sm font-black uppercase tracking-widest text-zinc-300 hover:bg-zinc-900 hover:text-amber-400 transition-colors"
                 >
                   {l.name}
-                  <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </a>
+                </Link>
               ))}
             </nav>
 
-            <div className="px-6 pb-10 space-y-3">
-              <a
-                href="#contact"
+            <div className="pt-6 border-t border-zinc-800 space-y-3">
+              <Link
+                href="/contact"
                 onClick={() => {
                   playClick();
                   setOpen(false);
                 }}
-                className="flex items-center justify-center gap-2 w-full bg-brand-orange text-white font-black text-sm py-4.5 rounded-2xl hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/20"
+                className="flex items-center justify-center gap-2 w-full bg-amber-500 text-black font-black text-xs uppercase tracking-widest py-4 rounded-xl shadow-lg shadow-amber-500/20"
               >
-                Book Free Strategy Call <ArrowRight className="w-4 h-4" />
-              </a>
+                Book Strategy Call <ArrowUpRight className="w-4 h-4" />
+              </Link>
               <a
                 href="https://wa.me/919018636473"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={playClick}
-                className="flex items-center justify-center gap-2 w-full bg-neutral-100 text-brand-black font-black text-sm py-4.5 rounded-2xl hover:bg-neutral-200 transition-colors"
+                className="flex items-center justify-center gap-2 w-full bg-zinc-900 text-white font-black text-xs uppercase tracking-widest py-4 rounded-xl border border-zinc-800"
               >
-                Chat on WhatsApp
+                WhatsApp Direct
               </a>
             </div>
           </div>

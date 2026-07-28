@@ -1,16 +1,16 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ServicesAccordion from "@/components/sections/ServicesAccordion";
+import ProcessTimeline from "@/components/sections/ProcessTimeline";
 import BookingWidget from "@/components/sections/BookingWidget";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Core Capabilities & Services | IMMNAVEED Digital Consultancy",
-  description: "Explore IMMNAVEED's full suite of services including Brand Strategy, Meta Ads, Next.js 15 Web Engineering, Custom ERPs, and Marketing Automation.",
+  title: "The 5-Stage Growth Methodology | IMMNAVEED",
+  description: "Discover Er. Naveed Malik's 5-Stage Growth Protocol: Audit, Brand Strategy, Next.js 15 Engineering, Funnel Launch, and Scale.",
 };
 
-export default function ServicesPage() {
+export default function ProcessPage() {
   return (
     <div className="bg-zinc-950 text-white min-h-screen flex flex-col font-sans">
       <Navbar />
@@ -21,23 +21,23 @@ export default function ServicesPage() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 mb-6">
               <span className="text-[10px] font-black uppercase tracking-widest text-amber-400">
-                Core Capabilities
+                Execution Protocol
               </span>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white mb-6">
-              Engineered Capabilities for <br />
-              <span className="text-gradient-bronze">Market Dominance.</span>
+              Systematic Growth. <br />
+              <span className="text-gradient-bronze">Zero Guesswork.</span>
             </h1>
             <p className="text-base text-zinc-400 font-medium max-w-2xl mx-auto leading-relaxed">
-              Every service is structured to reduce acquisition costs, elevate visual prestige, and build long-term commercial value.
+              Every client engagement follows our strict 5-stage engineering protocol to ensure predictable execution and maximum ROAS.
             </p>
           </div>
         </div>
 
-        {/* Services Accordion List */}
-        <ServicesAccordion />
+        {/* Process Timeline */}
+        <ProcessTimeline />
 
-        {/* Strategy Booking */}
+        {/* Lead Capture */}
         <BookingWidget />
       </main>
 

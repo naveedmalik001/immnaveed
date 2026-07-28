@@ -1,39 +1,49 @@
+import React from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Services from "@/components/Services";
-import WhyChooseUs from "@/components/WhyChooseUs";
+import ProofMarquee from "@/components/sections/ProofMarquee";
+import ServicesAccordion from "@/components/sections/ServicesAccordion";
+import Portfolio from "@/components/Portfolio";
+import IndustryMatrix from "@/components/sections/IndustryMatrix";
+import ProcessTimeline from "@/components/sections/ProcessTimeline";
+import FounderSpotlight from "@/components/sections/FounderSpotlight";
+import BookingWidget from "@/components/sections/BookingWidget";
 import Footer from "@/components/Footer";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-white text-brand-black antialiased selection:bg-brand-orange selection:text-white">
-      {/* Sticky top navigation header */}
+    <div className="flex flex-col min-h-screen bg-zinc-950 text-white font-sans antialiased selection:bg-amber-500 selection:text-black">
+      {/* Sticky Executive Navigation */}
       <Navbar />
 
-      {/* Main Page Layout Container */}
+      {/* Main Page Layout Flow */}
       <main className="flex-grow">
+        {/* Section 1: Editorial Hero */}
         <Hero />
-        <Services />
-        <WhyChooseUs />
-        
-        {/* Simple CTA linking to the dedicated contact page */}
-        <section className="py-24 bg-brand-black text-center px-4 sm:px-6">
-          <h2 className="text-3xl sm:text-4xl font-black text-white mb-6">Ready to scale your business?</h2>
-          <p className="text-neutral-400 max-w-lg mx-auto mb-10">
-            Let's build a dedicated growth pipeline with performance marketing and custom web solutions tailored for you.
-          </p>
-          <Link 
-            href="/contact"
-            className="inline-flex items-center gap-2 bg-brand-orange text-white font-bold text-sm px-8 py-4 rounded-full hover:bg-orange-600 transition-colors shadow-lg shadow-orange-900/30"
-          >
-            Get In Touch <ArrowRight className="w-4 h-4" />
-          </Link>
-        </section>
+
+        {/* Section 2: Social Proof & Client Logos Marquee */}
+        <ProofMarquee />
+
+        {/* Section 3: Core Capabilities & Services Accordion */}
+        <ServicesAccordion />
+
+        {/* Section 4: Verified Client Case Studies (Cambridge Edu, GoStudy, Campus Disha) */}
+        <Portfolio />
+
+        {/* Section 5: Target Industries Matrix */}
+        <IndustryMatrix />
+
+        {/* Section 6: 5-Stage Growth Methodology Timeline */}
+        <ProcessTimeline />
+
+        {/* Section 7: Founder Spotlight (Er. Naveed Malik) */}
+        <FounderSpotlight />
+
+        {/* Section 8: Interactive Lead Booking Widget */}
+        <BookingWidget />
       </main>
 
-      {/* Structured professional corporate footer */}
+      {/* Corporate Footer */}
       <Footer />
     </div>
   );

@@ -1,126 +1,111 @@
 @import "tailwindcss";
 
 @theme {
+  --color-brand-obsidian: #09090b;
+  --color-brand-surface: #121215;
+  --color-brand-card: #18181b;
+  --color-brand-bronze: #d97706;
   --color-brand-orange: #ff5a1f;
-  --color-brand-black: #0f0f0f;
-  --color-brand-gray: #f5f5f7;
+  --color-brand-gold: #f59e0b;
+  --color-text-primary: #fafafa;
+  --color-text-secondary: #a1a1aa;
+  --color-text-muted: #71717a;
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
 }
 
 :root {
+  --obsidian: #09090b;
+  --bronze: #d97706;
   --orange: #ff5a1f;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 70px;
+  scroll-padding-top: 80px;
+  background-color: #09090b;
+  color: #fafafa;
 }
 
 body {
+  background-color: #09090b;
+  color: #fafafa;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #f5f5f7; }
-::-webkit-scrollbar-thumb { background: #ff5a1f; border-radius: 4px; }
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d97706;
+}
 
-/* Gradient text utility */
-.text-gradient {
-  background: linear-gradient(135deg, #ff5a1f 0%, #ff8c55 100%);
+/* Luxury Editorial Text Gradients */
+.text-gradient-bronze {
+  background: linear-gradient(135deg, #ffffff 0%, #d97706 60%, #f59e0b 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Orange underline */
-.underline-orange {
-  text-decoration: underline;
-  text-decoration-color: #ff5a1f;
-  text-decoration-thickness: 3px;
-  text-underline-offset: 6px;
+.text-gradient-silver {
+  background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* Card hover */
-.card-hover {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+/* Structural Card Hover Effects */
+.luxury-card {
+  background: #121215;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.10);
-}
-
-/* Fade in animation */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.fade-up {
-  animation: fadeUp 0.6s ease both;
+.luxury-card:hover {
+  border-color: rgba(217, 119, 6, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
 }
 
-/* Float */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-8px); }
+/* Subtle Editorial Border Glow */
+.border-glow {
+  position: relative;
 }
-.float {
-  animation: float 4s ease-in-out infinite;
-}
-
-/* Spin slow */
-@keyframes spin-slow {
-  to { transform: rotate(360deg); }
-}
-.spin-slow {
-  animation: spin-slow 12s linear infinite;
-}
-
-/* Pulse ring */
-@keyframes pulse-ring {
-  0%   { transform: scale(1); opacity: 0.6; }
-  100% { transform: scale(1.5); opacity: 0; }
-}
-.pulse-ring::before {
-  content: '';
+.border-glow::after {
+  content: "";
   position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: #ff5a1f;
-  animation: pulse-ring 2s ease-out infinite;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.4), transparent 60%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
-/* Marquee */
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-.marquee {
-  animation: marquee 25s linear infinite;
-}
-.marquee:hover {
-  animation-play-state: paused;
-}
-
-/* Section spacing */
-.section-pad {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-@media (min-width: 640px) {
-  .section-pad {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
+/* Section Padding Utility */
+.section-pad-luxury {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 @media (min-width: 768px) {
-  .section-pad {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+  .section-pad-luxury {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
   }
 }
 
-/* Hide scrollbar for horizontal scroll areas */
+/* Hide scrollbar utility */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
