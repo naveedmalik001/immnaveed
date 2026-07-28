@@ -1,6 +1,7 @@
 "use client";
 
 import { CheckCircle, Award, Target, Globe, Code2, TrendingUp, Layers } from "lucide-react";
+import { useSound } from "@/hooks/useSound";
 
 const pillars = [
   { icon: Layers,    title: "Brand Identity",        desc: "Full visual language, logos & style guides that build instant trust." },
@@ -26,6 +27,7 @@ const achievements = [
 ];
 
 export default function About() {
+  const { playClick, playHover } = useSound();
   return (
     <section id="about" className="section-pad bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -66,6 +68,8 @@ export default function About() {
 
             <a
               href="#contact"
+              onClick={playClick}
+              onMouseEnter={playHover}
               className="inline-flex items-center gap-2 bg-brand-black text-white font-bold text-sm px-6 py-3.5 rounded-full hover:bg-brand-orange transition-colors duration-200"
             >
               Start Your Growth Journey →
