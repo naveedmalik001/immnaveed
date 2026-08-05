@@ -4,36 +4,26 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowUp, Mail, Phone, MapPin, MessageSquare, ArrowUpRight } from "lucide-react";
 import { useSound } from "@/hooks/useSound";
-
-function BrandMark() {
-  return (
-    <svg className="w-7 h-7 text-amber-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M4 20V8L12 15L20 8V20" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M12 4V12" stroke="#fafafa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M8 8L12 4L16 8" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
+import Logo from "@/components/shared/Logo";
 
 const sitemap = [
   { label: "Executive Home", href: "/" },
   { label: "About Founder",  href: "/about" },
   { label: "Core Capabilities", href: "/services" },
+  { label: "Case Process", href: "/#process" },
   { label: "Client Portfolio", href: "/portfolio" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Target Sectors", href: "/industries" },
-  { label: "Growth Process", href: "/process" },
-  { label: "Testimonials", href: "/testimonials" },
   { label: "Strategy Contact", href: "/contact" },
 ];
 
 const services = [
   { label: "Brand Strategy & Positioning", href: "/services/brand-strategy" },
   { label: "Business Growth Consulting", href: "/services/business-consulting" },
-  { label: "Performance Marketing", href: "/services/performance-marketing" },
+  { label: "Meta & Google Performance Ads", href: "/services/performance-marketing" },
   { label: "Next.js 15 Web Engineering", href: "/services/website-development" },
-  { label: "Custom ERP & Software", href: "/services/custom-software" },
-  { label: "SEO & Search Authority", href: "/services/seo-optimization" },
+  { label: "Custom ERP & Software Systems", href: "/services/custom-software" },
+  { label: "Technical & Authority SEO", href: "/services/seo-optimization" },
 ];
 
 export default function Footer() {
@@ -47,34 +37,36 @@ export default function Footer() {
   return (
     <footer className="bg-zinc-950 text-white font-sans border-t border-zinc-900 overflow-hidden relative select-none">
       
-      {/* Top Banner CTA */}
+      {/* Top Banner CTA (Right-Aligned Buttons) */}
       <div className="border-b border-zinc-900 py-12 md:py-16 bg-gradient-to-r from-zinc-950 via-zinc-900/60 to-zinc-950">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div>
-            <p className="text-[10px] font-black text-amber-500 uppercase tracking-widest mb-2">Ready to Dominate Your Industry?</p>
+            <p className="text-[10px] font-black text-amber-500 uppercase tracking-widest mb-2">Ready to Scale Your Brand?</p>
             <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-white">
               Schedule Your Executive <span className="text-gradient-bronze">Strategy Session.</span>
             </h3>
           </div>
+
           <div className="flex flex-col sm:flex-row gap-3">
             <Link
               href="/contact"
               onClick={playClick}
               onMouseEnter={playHover}
-              className="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-black font-black text-xs uppercase tracking-widest px-6 py-3.5 rounded-full transition-all shadow-lg shadow-amber-500/20"
+              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black font-black text-xs uppercase tracking-widest px-6 py-3.5 rounded-full transition-all shadow-lg shadow-amber-500/20"
             >
-              <span>Book Consultation</span>
+              <span>Book Strategy Call</span>
               <ArrowUpRight className="w-4 h-4" />
             </Link>
+
             <a
               href="https://wa.me/919018636473"
               target="_blank"
               rel="noopener noreferrer"
               onClick={playClick}
               onMouseEnter={playHover}
-              className="inline-flex items-center justify-center gap-2 border border-zinc-800 hover:border-zinc-700 text-white font-black text-xs uppercase tracking-widest px-6 py-3.5 rounded-full transition-colors"
+              className="inline-flex items-center justify-center gap-2 border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 font-black text-xs uppercase tracking-widest px-6 py-3.5 rounded-full transition-colors"
             >
-              <MessageSquare className="w-4 h-4 text-[#25D366]" />
+              <MessageSquare className="w-4 h-4" />
               <span>WhatsApp Direct</span>
             </a>
           </div>
@@ -87,19 +79,12 @@ export default function Footer() {
           
           {/* Brand Identity Column */}
           <div className="md:col-span-4 space-y-4">
-            <Link href="/" onClick={playClick} className="inline-flex items-center gap-3">
-              <div className="p-1.5 rounded-xl bg-amber-500/10 border border-amber-500/20">
-                <BrandMark />
-              </div>
-              <span className="text-lg font-black text-white">
-                IMM<span className="text-amber-500">NAVEED</span>
-              </span>
-            </Link>
+            <Logo />
             <p className="text-xs text-zinc-400 font-medium leading-relaxed max-w-sm">
-              IMMNAVEED is a luxury digital growth consultancy founded by Er. Naveed Malik. We engineer high-converting brand strategies, performance ad funnels, and Next.js platforms.
+              IMMNAVEED is a luxury digital growth consultancy founded by Er. Naveed Malik. We engineer high-converting brand strategies, Meta/Google ad funnels, and sub-1s Next.js 15 platforms.
             </p>
             <p className="text-[10px] font-black uppercase tracking-widest text-amber-500">
-              Brand Strategist | Growth Consultant
+              Executive Strategy · Software Engineering
             </p>
           </div>
 
@@ -160,17 +145,18 @@ export default function Footer() {
             </a>
             <div className="flex items-center gap-2 text-xs font-medium text-zinc-500 pt-2">
               <MapPin className="w-3.5 h-3.5 text-zinc-600" />
-              <span>India · Global Remote</span>
+              <span>India · Remote Worldwide</span>
             </div>
           </div>
 
         </div>
 
-        {/* Bottom Legal Bar */}
+        {/* Bottom Legal & Scroll Bar */}
         <div className="mt-12 pt-8 border-t border-zinc-900 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-[10px] text-zinc-600 font-semibold">
             © {year} IMMNAVEED. Er. Naveed Malik. All Rights Reserved.
           </p>
+          
           <div className="flex items-center gap-6">
             <Link href="/privacy" className="text-[10px] font-bold text-zinc-500 hover:text-zinc-300 transition-colors">
               Privacy Policy
@@ -183,6 +169,7 @@ export default function Footer() {
                 playClick();
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
+              aria-label="Scroll to top"
               className="w-8 h-8 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:border-amber-500/40 transition-all cursor-pointer"
             >
               <ArrowUp className="w-3.5 h-3.5" />

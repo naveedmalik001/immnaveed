@@ -62,18 +62,18 @@ export default function SectionHeader({
         )}
       </div>
 
-      {/* Optional Action Button */}
+      {/* Right-Aligned Action Button */}
       {actionLink && !centered && (
-        <div className="flex-shrink-0">
+        <div className="flex-shrink-0 self-start md:self-end">
           <Link
             href={actionLink.href}
             onClick={playClick}
             onMouseEnter={playHover}
-            className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-zinc-300 hover:text-amber-400 transition-colors group"
+            className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-zinc-900 border border-zinc-800 hover:border-amber-500/40 text-xs font-black uppercase tracking-widest text-zinc-300 hover:text-amber-400 transition-all shadow-md group"
           >
             <span>{actionLink.label}</span>
-            <div className="w-8 h-8 rounded-full border border-zinc-800 flex items-center justify-center group-hover:border-amber-500/40 group-hover:bg-amber-500/10 transition-all">
-              <ArrowUpRight className="w-4 h-4 text-zinc-400 group-hover:text-amber-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <div className="w-7 h-7 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-black transition-all">
+              <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </div>
           </Link>
         </div>
