@@ -2,8 +2,9 @@ import React from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ProofMarquee from "@/components/sections/ProofMarquee";
-import ServicesAccordion from "@/components/sections/ServicesAccordion";
+import InstagramFeed from "@/components/sections/InstagramFeed";
 import CaseProcessEngine from "@/components/sections/CaseProcessEngine";
+import ServicesAccordion from "@/components/sections/ServicesAccordion";
 import Portfolio from "@/components/Portfolio";
 import IndustryMatrix from "@/components/sections/IndustryMatrix";
 import FounderSpotlight from "@/components/sections/FounderSpotlight";
@@ -24,22 +25,25 @@ export default function Home() {
         {/* Section 2: Social Proof & Client Logos Marquee */}
         <ProofMarquee />
 
-        {/* Section 3: Step-by-Step Case & Consultation Framework */}
+        {/* Section 3: Instagram Content Showcase & Insights (@immnaveed) */}
+        <InstagramFeed />
+
+        {/* Section 4: Step-by-Step Case & Consultation Framework */}
         <CaseProcessEngine />
 
-        {/* Section 4: Full Capabilities & Services Accordion */}
+        {/* Section 5: Full Capabilities & Services Accordion */}
         <ServicesAccordion />
 
-        {/* Section 5: Verified Client Case Studies */}
+        {/* Section 6: Verified Client Case Studies */}
         <Portfolio />
 
-        {/* Section 6: Target Sectors & Industries Matrix */}
+        {/* Section 7: Target Sectors & Industries Matrix */}
         <IndustryMatrix />
 
-        {/* Section 7: Founder Spotlight (Er. Naveed Malik) */}
+        {/* Section 8: Founder Spotlight (Er. Naveed Malik) */}
         <FounderSpotlight />
 
-        {/* Section 8: Interactive Lead & Strategy Consultation Widget */}
+        {/* Section 9: Interactive Lead & Strategy Consultation Widget */}
         <BookingWidget />
       </main>
 

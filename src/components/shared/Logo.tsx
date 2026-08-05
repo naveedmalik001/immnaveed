@@ -63,7 +63,7 @@ export default function Logo({ className = "", showSubtitle = true, onClick }: L
         </div>
         {showSubtitle && (
           <span className="text-[8px] font-black text-zinc-400 uppercase tracking-widest mt-1">
-            Executive Strategy & Mobility
+            Brand Strategist & Growth Consultant
           </span>
         )}
       </div>
