@@ -11,7 +11,7 @@ export default function IndustryMatrix() {
   const { playClick, playHover } = useSound();
 
   return (
-    <section id="industries" className="section-pad-luxury bg-zinc-950 font-sans border-b border-zinc-900">
+    <section id="industries" className="section-pad bg-[#041E42] font-sans border-b border-slate-800">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <SectionHeader
           badgeText="Target Sectors"
@@ -19,6 +19,7 @@ export default function IndustryMatrix() {
           gradientTitle="Your Industry."
           subtitle="Generic marketing fails because every sector has unique compliance, buyer psychology, and decision cycles. We build vertical-specific engines."
           actionLink={{ label: "View All Industries", href: "/industries" }}
+          theme="dark"
         />
 
         {/* Sector Cards Grid */}
@@ -26,46 +27,46 @@ export default function IndustryMatrix() {
           {industriesData.map((ind) => (
             <div
               key={ind.id}
-              className="luxury-card rounded-2xl p-6 flex flex-col justify-between group cursor-default"
+              className="card-navy p-7 flex flex-col justify-between group cursor-default bg-[#05244C]/90"
             >
               <div>
                 {/* Top Badge */}
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                  <span className="badge-teal text-[10px] py-1 px-3">
                     {ind.growthStats}
                   </span>
-                  <div className="w-8 h-8 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:border-amber-500/40 group-hover:bg-amber-500/10 transition-all">
-                    <ArrowUpRight className="w-4 h-4 text-zinc-400 group-hover:text-amber-400 transition-colors" />
+                  <div className="w-8 h-8 rounded-xl bg-[#031730] border border-slate-700/60 flex items-center justify-center group-hover:border-[#14B8C4] group-hover:bg-[#14B8C4] transition-all">
+                    <ArrowUpRight className="w-4 h-4 text-slate-300 group-hover:text-[#031730] transition-colors" />
                   </div>
                 </div>
 
-                <h3 className="text-xl font-black text-white mb-2 group-hover:text-amber-400 transition-colors">
+                <h3 className="font-display text-xl font-bold text-white mb-1.5 group-hover:text-[#14B8C4] transition-colors">
                   {ind.title}
                 </h3>
-                <p className="text-xs text-amber-500/90 font-bold mb-4">
+                <p className="text-xs text-[#14B8C4] font-bold mb-3">
                   {ind.subtitle}
                 </p>
-                <p className="text-xs text-zinc-400 leading-relaxed font-medium mb-6">
+                <p className="text-xs text-slate-300 leading-relaxed font-normal mb-6">
                   {ind.description}
                 </p>
 
                 {/* Core Solutions List */}
-                <div className="space-y-2 mb-6 pt-4 border-t border-zinc-800/60">
-                  <p className="text-[9px] font-black text-zinc-500 uppercase tracking-widest">Key Solutions:</p>
+                <div className="space-y-2 mb-6 pt-4 border-t border-slate-700/60">
+                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Key Solutions:</p>
                   {ind.ourSolutions.slice(0, 2).map((sol, i) => (
                     <div key={i} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-amber-500 flex-shrink-0 mt-0.5" />
-                      <span className="text-xs text-zinc-300 font-medium leading-snug">{sol}</span>
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#14B8C4] flex-shrink-0 mt-0.5" />
+                      <span className="text-xs text-slate-200 font-normal leading-snug">{sol}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               <Link
-                href={`/industries/${ind.slug}`}
+                href={`/industries`}
                 onClick={playClick}
                 onMouseEnter={playHover}
-                className="inline-flex items-center justify-between text-xs font-black uppercase tracking-widest text-zinc-300 group-hover:text-amber-400 transition-colors pt-4 border-t border-zinc-800/60"
+                className="inline-flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-300 group-hover:text-[#14B8C4] transition-colors pt-4 border-t border-slate-700/60"
               >
                 <span>Read Sector Strategy</span>
                 <ArrowUpRight className="w-4 h-4" />

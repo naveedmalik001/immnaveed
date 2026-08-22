@@ -1,114 +1,119 @@
 "use client";
 
-import { CheckCircle, Award, Target, Globe, Code2, TrendingUp, Layers } from "lucide-react";
+import React from "react";
+import { CheckCircle2, Award, Target, Globe, Code2, TrendingUp, Layers, ArrowRight } from "lucide-react";
 import { useSound } from "@/hooks/useSound";
+import Link from "next/link";
+import SectionHeader from "@/components/shared/SectionHeader";
 
 const pillars = [
-  { icon: Layers,    title: "Brand Identity",        desc: "Full visual language, logos & style guides that build instant trust." },
-  { icon: TrendingUp,title: "Performance Marketing", desc: "Data-backed Meta ads with ROAS-optimised campaign frameworks." },
-  { icon: Code2,     title: "Product Engineering",   desc: "Next.js websites & ERP dashboards built for speed and scale." },
-  { icon: Globe,     title: "Digital Visibility",    desc: "SEO, local discovery & social authority systems." },
-  { icon: Target,    title: "Startup Consulting",    desc: "GTM strategy, pitch structure & growth advisory for founders." },
-  { icon: Award,     title: "Content Ecosystems",    desc: "Scalable content calendars, reels & copywriting engines." },
+  { icon: Layers,    title: "Brand Identity",        desc: "Full visual language, executive marks & style guides that command instant trust." },
+  { icon: TrendingUp,title: "Performance Marketing", desc: "Data-backed Meta & Google ad funnels with verified ROAS scaling frameworks." },
+  { icon: Code2,     title: "Software Engineering",  desc: "Lightning-fast Next.js 15 web portals & custom ERPs built for sub-1s load times." },
+  { icon: Globe,     title: "Digital Visibility",    desc: "Structured schema SEO, local discovery & authority positioning." },
+  { icon: Target,    title: "Startup Consulting",    desc: "Unit economics, pricing model restructuring & quarterly scaling advisory." },
+  { icon: Award,     title: "Content Ecosystems",    desc: "High-retention social content calendars, reels & conversion copywriting." },
 ];
 
 const checks = [
-  "Strategy rooted in data — not guesswork",
-  "Full-funnel approach from awareness to conversion",
-  "Transparent reporting with real attribution metrics",
-  "Human-centred creative that emotionally resonates",
+  "Strategy rooted in empirical data — zero guesswork",
+  "Full-funnel architecture from awareness to bottom-line conversion",
+  "Transparent reporting with multi-touch attribution metrics",
+  "Human-centered creative that emotionally connects with buyers",
 ];
 
 const achievements = [
-  { val: "50+",   label: "Brands Transformed" },
-  { val: "₹12Cr+", label: "Revenue Generated" },
-  { val: "15M+",  label: "Reach Built" },
-  { val: "4.8×",  label: "Average ROAS" },
+  { val: "50+",    label: "Brands Scaled" },
+  { val: "₹12Cr+", label: "Client Revenue" },
+  { val: "15M+",   label: "Audience Reach" },
+  { val: "4.8×",   label: "Average ROAS" },
 ];
 
 export default function About() {
   const { playClick, playHover } = useSound();
+
   return (
-    <section id="about" className="section-pad bg-white">
+    <section id="about" className="section-pad bg-white border-b border-slate-200 font-sans">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
-        {/* Label */}
-        <div className="flex items-center gap-3 mb-4">
-          <div className="h-px w-8 bg-brand-orange" />
-          <span className="text-xs font-black tracking-widest text-brand-orange uppercase">
-            Core Philosophy
-          </span>
-        </div>
+        {/* Section Header */}
+        <SectionHeader
+          badgeText="Core Philosophy"
+          title="We Don't Just Market."
+          gradientTitle="We Engineer Growth."
+          subtitle="At IMMNAVEED, real digital success is built on robust strategy and sustainable systems — not temporary hype. We build high-converting brands, performance funnels, and sub-1s web platforms."
+          theme="light"
+        />
 
         {/* Two-col layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mt-8">
 
-          {/* Left text */}
-          <div>
-            <h2 className="text-2xl sm:text-3xl lg:text-[2.6rem] font-black text-brand-black leading-[1.1] tracking-tight mb-4 sm:mb-5">
-              We Don't Just Market.<br />
-              <span className="text-gradient">We Engineer Growth.</span>
-            </h2>
+          {/* Left text & credentials */}
+          <div className="lg:col-span-6 space-y-6">
+            <h3 className="font-display text-2xl sm:text-3xl font-extrabold text-[#0F172A] leading-tight">
+              A Unified Engine for <span className="text-gradient-teal">Market Authority.</span>
+            </h3>
 
-            <p className="text-sm text-neutral-500 leading-relaxed mb-5 sm:mb-6">
-              At IMMNAVEED we believe real digital success is built on robust strategy and
-              sustainable systems — not temporary hype. We partner with founders, brands, and
-              companies to combine brand strategy, high-performance marketing, and custom digital
-              engineering into a unified engine that produces measurable growth.
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+              Founded by Er. Naveed Malik, IMMNAVEED eliminates the fragmentation between brand agencies and software teams. We unify executive brand design, high-converting Meta and Google ad campaigns, and custom Next.js engineering into one cohesive retainer.
             </p>
 
-            <ul className="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8">
-              {checks.map(c => (
-                <li key={c} className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-brand-orange flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-neutral-600 font-medium">{c}</span>
+            <ul className="space-y-3 pt-2">
+              {checks.map((c) => (
+                <li key={c} className="flex items-start gap-3 bg-[#F8FAFC] p-3 rounded-xl border border-slate-200">
+                  <CheckCircle2 className="w-5 h-5 text-[#0E8A94] flex-shrink-0 mt-0.5" />
+                  <span className="text-xs sm:text-sm text-slate-700 font-semibold">{c}</span>
                 </li>
               ))}
             </ul>
 
-            <a
-              href="#contact"
-              onClick={playClick}
-              onMouseEnter={playHover}
-              className="inline-flex items-center gap-2 bg-brand-black text-white font-bold text-sm px-6 py-3.5 rounded-full hover:bg-brand-orange transition-colors duration-200"
-            >
-              Start Your Growth Journey →
-            </a>
+            <div className="pt-4">
+              <Link
+                href="/contact"
+                onClick={playClick}
+                onMouseEnter={playHover}
+                className="btn-orange text-sm font-bold"
+              >
+                <span>Start Your Growth Journey</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
 
-          {/* Right */}
-          <div>
+          {/* Right Pillar Cards & Stats */}
+          <div className="lg:col-span-6 space-y-6">
             {/* Achievement pills */}
-            <div className="grid grid-cols-2 gap-2.5 sm:gap-3 mb-5 sm:mb-6">
-              {achievements.map(a => (
-                <div key={a.label} className="bg-brand-gray border border-neutral-100 rounded-2xl p-3 sm:p-4 text-center">
-                  <p className="text-xl sm:text-2xl font-black text-brand-black">{a.val}</p>
-                  <p className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider mt-1">{a.label}</p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {achievements.map((a) => (
+                <div key={a.label} className="bg-[#F8FAFC] border border-slate-200 rounded-2xl p-4 text-center shadow-xs">
+                  <p className="font-display text-2xl font-extrabold text-[#0F172A]">{a.val}</p>
+                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mt-1">{a.label}</p>
                 </div>
               ))}
             </div>
 
             {/* Pillar cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
-              {pillars.map(p => {
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              {pillars.map((p) => {
                 const Icon = p.icon;
                 return (
                   <div
                     key={p.title}
-                    className="bg-white border border-neutral-100 rounded-2xl p-4 card-hover group cursor-default"
+                    className="card-white p-5 group cursor-default"
                   >
-                    <div className="w-9 h-9 bg-orange-50 rounded-xl flex items-center justify-center mb-3 group-hover:bg-brand-orange transition-colors duration-200">
-                      <Icon className="w-4 h-4 text-brand-orange group-hover:text-white transition-colors duration-200" />
+                    <div className="w-10 h-10 bg-[#14B8C4]/10 border border-[#14B8C4]/20 rounded-xl flex items-center justify-center mb-3 text-[#0E8A94] group-hover:scale-110 group-hover:bg-[#14B8C4] group-hover:text-white transition-all duration-200">
+                      <Icon className="w-5 h-5" />
                     </div>
-                    <h3 className="text-[13px] font-black text-brand-black mb-1 group-hover:text-brand-orange transition-colors">
+                    <h3 className="font-display text-sm font-bold text-[#0F172A] mb-1 group-hover:text-[#0E8A94] transition-colors">
                       {p.title}
                     </h3>
-                    <p className="text-xs text-neutral-500 leading-relaxed">{p.desc}</p>
+                    <p className="text-xs text-slate-500 leading-relaxed font-normal">{p.desc}</p>
                   </div>
                 );
               })}
             </div>
           </div>
+
         </div>
       </div>
     </section>

@@ -7,6 +7,7 @@ import { useSound } from "@/hooks/useSound";
 interface LogoProps {
   className?: string;
   onClick?: () => void;
+  variant?: "dark" | "light";
 }
 
 export default function Logo({ className = "", onClick }: LogoProps) {
@@ -20,17 +21,21 @@ export default function Logo({ className = "", onClick }: LogoProps) {
         playClick();
       }}
       onMouseEnter={playHover}
-      className={`inline-flex items-center gap-2.5 group cursor-pointer ${className}`}
+      className={`inline-flex items-center gap-3 group cursor-pointer ${className}`}
     >
-      <div className="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 font-black text-sm group-hover:border-amber-500/60 transition-all">
-        N
+      {/* Monogram emblem in Deep Navy with Cyan border */}
+      <div
+        className="w-9 h-9 flex items-center justify-center flex-shrink-0 transition-all duration-200 group-hover:scale-105 rounded-lg bg-[#0E2849] border border-[#00D2D3]/40 shadow-sm"
+      >
+        <span className="font-black text-sm text-[#00D2D3] tracking-tight">N</span>
       </div>
+
       <div className="flex flex-col leading-none">
-        <span className="text-lg font-black tracking-tight text-white">
-          IMM<span className="text-amber-500">NAVEED</span>
+        <span className="text-base font-black tracking-tight text-white">
+          IMM<span className="text-[#00D2D3]">NAVEED</span>
         </span>
-        <span className="text-[8px] font-bold text-zinc-400 uppercase tracking-widest mt-0.5">
-          Brand & Growth Consultancy
+        <span className="text-[8px] font-bold uppercase tracking-[0.14em] text-slate-400 mt-0.5">
+          Brand &amp; Growth Consultancy
         </span>
       </div>
     </Link>

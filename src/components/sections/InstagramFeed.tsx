@@ -2,7 +2,7 @@
 
 import React from "react";
 import SectionHeader from "@/components/shared/SectionHeader";
-import { ExternalLink, Heart, MessageCircle, Sparkles, TrendingUp, ShieldCheck, ArrowUpRight, Share2 } from "lucide-react";
+import { ExternalLink, Heart, MessageCircle, ArrowUpRight } from "lucide-react";
 import { useSound } from "@/hooks/useSound";
 
 function InstagramIcon({ className = "w-5 h-5" }: { className?: string }) {
@@ -23,7 +23,6 @@ const instagramPosts = [
     caption: "Stop using template designs. High-net-worth clients look for authority positioning, crisp typography, and sub-1s load times.",
     likes: "142",
     comments: "28",
-    color: "#F59E0B",
     url: "https://www.instagram.com/immnaveed",
   },
   {
@@ -33,7 +32,6 @@ const instagramPosts = [
     caption: "Creative A/B testing and direct intent targeting outperform mass broad spending every single time.",
     likes: "189",
     comments: "34",
-    color: "#10B981",
     url: "https://www.instagram.com/immnaveed",
   },
   {
@@ -43,7 +41,6 @@ const instagramPosts = [
     caption: "Why sub-800ms Lighthouse scores directly increase Google SEO rankings and cut acquisition costs by 35%.",
     likes: "210",
     comments: "45",
-    color: "#3B82F6",
     url: "https://www.instagram.com/immnaveed",
   },
   {
@@ -53,7 +50,6 @@ const instagramPosts = [
     caption: "Integrating WhatsApp API auto-responders reduced counselor lead follow-up time from 6 hours to 45 seconds.",
     likes: "176",
     comments: "31",
-    color: "#FF5A1F",
     url: "https://www.instagram.com/immnaveed",
   },
   {
@@ -63,7 +59,6 @@ const instagramPosts = [
     caption: "1. Brand Identity Authority, 2. Automated Inbound Engine, 3. Proprietary Software Systems.",
     likes: "254",
     comments: "52",
-    color: "#8B5CF6",
     url: "https://www.instagram.com/immnaveed",
   },
   {
@@ -73,7 +68,6 @@ const instagramPosts = [
     caption: "Transforming overseas education lead generation through interactive course matchers and real-time scheduling.",
     likes: "198",
     comments: "39",
-    color: "#EC4899",
     url: "https://www.instagram.com/immnaveed",
   },
 ];
@@ -82,12 +76,8 @@ export default function InstagramFeed() {
   const { playClick, playHover } = useSound();
 
   return (
-    <section className="section-pad-luxury bg-zinc-950 font-sans border-b border-zinc-900 overflow-hidden relative select-none">
-      
-      {/* Background Glow */}
-      <div className="absolute top-1/2 right-0 w-80 h-80 bg-pink-500/5 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+    <section className="section-pad bg-[#F8FAFC] font-sans border-b border-slate-200 select-none">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Header */}
         <SectionHeader
@@ -96,37 +86,36 @@ export default function InstagramFeed() {
           gradientTitle="Instagram (@immnaveed)."
           subtitle="Follow Er. Naveed Malik on Instagram for daily breakdowns on executive brand strategy, Meta ad architecture, and Next.js engineering."
           actionLink={{ label: "Follow @immnaveed", href: "https://www.instagram.com/immnaveed" }}
+          theme="light"
         />
 
-        {/* Live Instagram Community Stats Bar */}
-        <div className="bg-gradient-to-r from-zinc-900 via-zinc-900/80 to-zinc-900 p-6 rounded-2xl border border-zinc-800/80 mb-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+        {/* Live Instagram Profile Box */}
+        <div className="bg-white p-6 sm:p-7 rounded-3xl border border-slate-200 mb-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-amber-500 via-pink-500 to-purple-600 p-0.5 shadow-lg">
-              <div className="w-full h-full bg-zinc-950 rounded-full flex items-center justify-center">
-                <InstagramIcon className="w-6 h-6 text-pink-400" />
-              </div>
+            <div className="w-14 h-14 rounded-2xl bg-[#041E42] text-[#14B8C4] flex items-center justify-center flex-shrink-0 shadow-md">
+              <InstagramIcon className="w-7 h-7" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="text-base font-black text-white">@immnaveed</h3>
-                <span className="text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded bg-pink-500/10 text-pink-400 border border-pink-500/20">
-                  Official Handle
+                <h3 className="font-display text-lg font-bold text-[#0F172A]">@immnaveed</h3>
+                <span className="badge-teal text-[9px] py-0.5 px-2.5">
+                  Official Profile
                 </span>
               </div>
-              <p className="text-xs text-zinc-400 font-medium mt-0.5">
-                Brand Strategist | Growth Consultant | Digital Architecture
+              <p className="text-xs text-slate-500 font-normal mt-0.5">
+                Brand Strategist · Growth Consultant · Next.js Software Architecture
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-8 border-t md:border-t-0 md:border-l border-zinc-800 pt-4 md:pt-0 md:pl-8">
+          <div className="flex items-center gap-8 border-t md:border-t-0 md:border-l border-slate-200 pt-4 md:pt-0 md:pl-8">
             <div className="text-center md:text-left">
-              <p className="text-lg sm:text-xl font-black text-white">900+</p>
-              <p className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Founders & Marketers</p>
+              <p className="font-display text-lg sm:text-xl font-bold text-[#0F172A]">900+</p>
+              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Founders &amp; Marketers</p>
             </div>
             <div className="text-center md:text-left">
-              <p className="text-lg sm:text-xl font-black text-white">60+</p>
-              <p className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Strategy Breakdown Posts</p>
+              <p className="font-display text-lg sm:text-xl font-bold text-[#0F172A]">60+</p>
+              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Strategy Breakdowns</p>
             </div>
             <div className="hidden sm:block">
               <a
@@ -135,7 +124,7 @@ export default function InstagramFeed() {
                 rel="noopener noreferrer"
                 onClick={playClick}
                 onMouseEnter={playHover}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 via-purple-500 to-amber-500 hover:opacity-90 text-white font-black text-xs uppercase tracking-widest px-5 py-3 rounded-xl transition-all shadow-lg"
+                className="btn-teal"
               >
                 <span>Visit Instagram</span>
                 <ExternalLink className="w-3.5 h-3.5" />
@@ -154,43 +143,39 @@ export default function InstagramFeed() {
               rel="noopener noreferrer"
               onClick={playClick}
               onMouseEnter={playHover}
-              className="luxury-card rounded-2xl p-6 border border-zinc-800 bg-zinc-900/60 hover:border-pink-500/40 transition-all group cursor-pointer flex flex-col justify-between"
+              className="card-white p-6 group cursor-pointer flex flex-col justify-between"
             >
               <div>
                 {/* Tag & Icon Row */}
                 <div className="flex items-center justify-between mb-4">
-                  <span
-                    className="text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-md"
-                    style={{ background: `${post.color}15`, color: post.color, border: `1px solid ${post.color}30` }}
-                  >
+                  <span className="badge-teal text-[10px] py-1 px-3">
                     {post.tag}
                   </span>
-                  <div className="w-8 h-8 rounded-full bg-zinc-950 border border-zinc-800 flex items-center justify-center group-hover:border-pink-500/50 group-hover:bg-pink-500/10 transition-all">
-                    <InstagramIcon className="w-4 h-4 text-zinc-400 group-hover:text-pink-400 transition-colors" />
+                  <div className="w-8 h-8 rounded-xl bg-[#F8FAFC] border border-slate-200 flex items-center justify-center text-slate-500 group-hover:bg-[#14B8C4] group-hover:text-white group-hover:border-[#14B8C4] transition-colors">
+                    <InstagramIcon className="w-4 h-4" />
                   </div>
                 </div>
 
-                <h4 className="text-base font-black text-white group-hover:text-amber-400 transition-colors leading-snug mb-3">
+                <h4 className="font-display text-base font-bold text-[#0F172A] group-hover:text-[#0E8A94] transition-colors leading-snug mb-2.5">
                   {post.title}
                 </h4>
-                <p className="text-xs text-zinc-400 leading-relaxed font-medium mb-6 line-clamp-3">
+                <p className="text-xs text-slate-500 leading-relaxed font-normal mb-6 line-clamp-3">
                   {post.caption}
                 </p>
               </div>
 
-              {/* Footer Engagement Metrics & Right-aligned link */}
-              <div className="pt-4 border-t border-zinc-800/80 flex items-center justify-between text-xs text-zinc-500">
+              {/* Card Footer */}
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
                 <div className="flex items-center gap-4">
-                  <span className="flex items-center gap-1 font-bold text-zinc-400 group-hover:text-pink-400 transition-colors">
-                    <Heart className="w-3.5 h-3.5 text-pink-500 fill-pink-500/20" /> {post.likes}
+                  <span className="flex items-center gap-1 font-semibold text-slate-600">
+                    <Heart className="w-3.5 h-3.5 text-rose-500" /> {post.likes}
                   </span>
-                  <span className="flex items-center gap-1 font-bold text-zinc-400">
-                    <MessageCircle className="w-3.5 h-3.5" /> {post.comments}
+                  <span className="flex items-center gap-1 font-semibold text-slate-600">
+                    <MessageCircle className="w-3.5 h-3.5 text-[#0E8A94]" /> {post.comments}
                   </span>
                 </div>
 
-                {/* Right-aligned trigger link */}
-                <span className="text-[11px] font-black text-amber-400 group-hover:text-amber-300 uppercase tracking-widest flex items-center gap-1">
+                <span className="text-[11px] font-bold text-[#0E8A94] group-hover:text-[#041E42] uppercase tracking-wider flex items-center gap-1">
                   <span>Read Post</span>
                   <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </span>

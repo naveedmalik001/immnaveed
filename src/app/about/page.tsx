@@ -1,8 +1,11 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import About from "@/components/About";
 import FounderSpotlight from "@/components/sections/FounderSpotlight";
-import ProcessTimeline from "@/components/sections/ProcessTimeline";
+import WhyChooseUs from "@/components/WhyChooseUs";
+import Testimonials from "@/components/Testimonials";
+import ProofMarquee from "@/components/sections/ProofMarquee";
 import BookingWidget from "@/components/sections/BookingWidget";
 import { Metadata } from "next";
 
@@ -13,34 +16,45 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="bg-zinc-950 text-white min-h-screen flex flex-col font-sans">
+    <div className="bg-[#031730] text-white min-h-screen flex flex-col font-sans">
       <Navbar />
 
-      <main className="flex-grow pt-24">
+      <main className="flex-grow pt-[76px]">
         {/* Page Header */}
-        <div className="py-16 md:py-24 border-b border-zinc-900 bg-zinc-950">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-widest text-amber-400">
-                Philosophy & Leadership
+        <div className="py-16 md:py-24 border-b border-slate-800 bg-gradient-to-br from-[#041E42] via-[#05244C] to-[#031730] bg-grid-blueprint text-center relative overflow-hidden">
+          <div className="absolute w-[500px] h-[500px] -top-20 -left-20 bg-[#14B8C4]/15 rounded-full blur-3xl pointer-events-none" />
+          
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+            <div className="mb-4">
+              <span className="badge-teal">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#14B8C4] animate-pulse" />
+                Philosophy &amp; Leadership
               </span>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white mb-6">
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-4">
               We Don&apos;t Just Market. <br />
-              <span className="text-gradient-bronze">We Engineer Growth.</span>
+              <span className="text-gradient-teal">We Engineer Growth.</span>
             </h1>
-            <p className="text-base sm:text-lg text-zinc-400 font-medium max-w-2xl mx-auto leading-relaxed">
-              IMMNAVEED combines executive brand strategy, Meta performance advertising, and Next.js 15 software architecture into one systematic engine.
+            <p className="text-base sm:text-lg text-slate-300 font-normal max-w-2xl mx-auto leading-relaxed">
+              IMMNAVEED combines executive brand strategy, Meta performance advertising, and Next.js software architecture into one systematic engine.
             </p>
           </div>
         </div>
 
+        {/* Proof Stats */}
+        <ProofMarquee />
+
+        {/* About Philosophy */}
+        <About />
+
         {/* Founder Spotlight */}
         <FounderSpotlight />
 
-        {/* Growth Methodology */}
-        <ProcessTimeline />
+        {/* Competitive Advantage */}
+        <WhyChooseUs />
+
+        {/* Testimonials */}
+        <Testimonials />
 
         {/* Strategy Consultation Booking */}
         <BookingWidget />

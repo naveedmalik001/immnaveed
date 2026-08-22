@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import SectionHeader from "@/components/shared/SectionHeader";
-import { CheckCircle2, Clock, FileText, ArrowRight, ShieldCheck, Cpu, Target, ArrowUpRight } from "lucide-react";
+import { CheckCircle2, Clock, FileText, ArrowRight, ShieldCheck, Cpu, Target } from "lucide-react";
 import { useSound } from "@/hooks/useSound";
 
 interface ProcessPhase {
@@ -128,7 +128,7 @@ export default function CaseProcessEngine() {
   const activePhase = phases.find((p) => p.id === activeStageId) || phases[0];
 
   return (
-    <section id="process" className="section-pad-luxury bg-zinc-950 font-sans border-b border-zinc-900 relative">
+    <section id="process" className="section-pad bg-white font-sans border-b border-slate-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
@@ -138,10 +138,11 @@ export default function CaseProcessEngine() {
           gradientTitle="Consultation Framework."
           subtitle="Growth is not accidental. It is calculated positioning, rigorous auditing, performance ad execution, and sub-1s software engineering."
           actionLink={{ label: "Request Case Audit Call", href: "/contact" }}
+          theme="light"
         />
 
-        {/* 5-Step Progress Bar Tabs */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-10">
+        {/* 5-Step Stepper Tabs */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-8">
           {phases.map((phase) => {
             const isActive = phase.id === activeStageId;
             const Icon = phase.icon;
@@ -153,29 +154,29 @@ export default function CaseProcessEngine() {
                   setActiveStageId(phase.id);
                 }}
                 onMouseEnter={playHover}
-                className={`p-4 rounded-2xl border text-left transition-all duration-300 flex flex-col justify-between cursor-pointer ${
+                className={`p-4 rounded-2xl border text-left transition-all duration-200 flex flex-col justify-between cursor-pointer ${
                   isActive
-                    ? "bg-zinc-900 border-amber-500 shadow-xl shadow-amber-500/10 scale-[1.02]"
-                    : "bg-zinc-900/40 border-zinc-800 hover:border-zinc-700 opacity-80 hover:opacity-100"
+                    ? "bg-[#041E42] border-[#041E42] text-white shadow-xl shadow-[#041E42]/15 scale-[1.02]"
+                    : "bg-[#F8FAFC] border-slate-200 text-slate-600 hover:border-[#14B8C4] hover:text-[#041E42]"
                 }`}
               >
                 <div className="flex items-center justify-between mb-3">
-                  <span className={`text-xl font-black ${isActive ? "text-amber-400" : "text-zinc-500"}`}>
+                  <span className={`font-display text-xl font-extrabold ${isActive ? "text-[#14B8C4]" : "text-slate-400"}`}>
                     {phase.step}
                   </span>
                   <div
-                    className={`w-7 h-7 rounded-lg flex items-center justify-center ${
-                      isActive ? "bg-amber-500 text-black" : "bg-zinc-800 text-zinc-400"
+                    className={`w-8 h-8 rounded-xl flex items-center justify-center ${
+                      isActive ? "bg-white/10 text-[#14B8C4]" : "bg-white border border-slate-200 text-slate-500"
                     }`}
                   >
-                    <Icon className="w-3.5 h-3.5" />
+                    <Icon className="w-4 h-4" />
                   </div>
                 </div>
                 <div>
-                  <span className="text-[9px] font-black uppercase tracking-widest text-amber-500/90 block mb-1">
+                  <span className={`text-[9px] font-bold uppercase tracking-wider block mb-1 ${isActive ? "text-[#14B8C4]" : "text-[#0E8A94]"}`}>
                     {phase.highlightTag}
                   </span>
-                  <h3 className="text-xs font-black text-white line-clamp-1">
+                  <h3 className={`text-xs font-bold line-clamp-1 ${isActive ? "text-white" : "text-[#0F172A]"}`}>
                     {phase.title}
                   </h3>
                 </div>
@@ -185,40 +186,40 @@ export default function CaseProcessEngine() {
         </div>
 
         {/* Selected Phase Detail Display Box */}
-        <div className="luxury-card rounded-3xl p-6 sm:p-10 border border-zinc-800 bg-gradient-to-br from-zinc-900/90 via-zinc-950 to-zinc-900 animate-fadeIn">
+        <div className="card-white p-6 sm:p-10 bg-white">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
             {/* Left Stage Details */}
             <div className="lg:col-span-7 space-y-6">
               
               <div className="flex items-center gap-3">
-                <span className="text-xs font-black px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 uppercase tracking-widest">
+                <span className="badge-teal">
                   Phase {activePhase.step} · {activePhase.highlightTag}
                 </span>
-                <span className="text-xs font-bold text-zinc-400 flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5 text-amber-500" /> Turnaround: {activePhase.turnaround}
+                <span className="text-xs font-semibold text-slate-500 flex items-center gap-1.5">
+                  <Clock className="w-3.5 h-3.5 text-[#0E8A94]" /> Turnaround: {activePhase.turnaround}
                 </span>
               </div>
 
               <div>
-                <h3 className="text-2xl sm:text-3xl font-black text-white mb-3 leading-tight">
+                <h3 className="font-display text-2xl sm:text-3xl font-extrabold text-[#0F172A] mb-3 leading-tight">
                   {activePhase.title}
                 </h3>
-                <p className="text-sm text-zinc-300 font-medium leading-relaxed">
+                <p className="text-sm text-slate-600 font-normal leading-relaxed">
                   {activePhase.fullDesc}
                 </p>
               </div>
 
               {/* Deliverables Grid */}
               <div>
-                <p className="text-[10px] font-black uppercase tracking-widest text-amber-400 mb-3">
-                  Stage Deliverables & Milestones:
+                <p className="text-[10px] font-bold uppercase tracking-widest text-[#0F172A] mb-3">
+                  Stage Deliverables &amp; Milestones:
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {activePhase.deliverables.map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-2.5 bg-zinc-950 p-3 rounded-xl border border-zinc-800/80">
-                      <CheckCircle2 className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
-                      <span className="text-xs font-bold text-zinc-300 leading-snug">{item}</span>
+                    <div key={idx} className="flex items-start gap-2.5 bg-[#F8FAFC] p-3.5 rounded-xl border border-slate-200">
+                      <CheckCircle2 className="w-4 h-4 text-[#0E8A94] flex-shrink-0 mt-0.5" />
+                      <span className="text-xs font-medium text-slate-700 leading-snug">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -227,42 +228,42 @@ export default function CaseProcessEngine() {
             </div>
 
             {/* Right Stage Inputs & Consultation Trigger */}
-            <div className="lg:col-span-5 bg-zinc-950 p-6 rounded-2xl border border-zinc-800/90 space-y-6">
+            <div className="lg:col-span-5 bg-[#F8FAFC] p-6 rounded-2xl border border-slate-200 space-y-6">
               
               <div>
-                <p className="text-[10px] font-black uppercase tracking-widest text-zinc-400 mb-3">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-3">
                   Required Inputs from Client:
                 </p>
                 <ul className="space-y-2">
                   {activePhase.requiredInputs.map((input, i) => (
-                    <li key={i} className="text-xs font-semibold text-zinc-300 flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                    <li key={i} className="text-xs font-semibold text-slate-700 flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#14B8C4]" />
                       {input}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="p-4 rounded-xl bg-zinc-900 border border-zinc-800/80 space-y-2">
+              <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-2 shadow-xs">
                 <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                  <span className="text-xs font-bold text-white">Direct Founder Supervision</span>
+                  <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                  <span className="text-xs font-bold text-[#0F172A]">Direct Founder Supervision</span>
                 </div>
-                <p className="text-[11px] text-zinc-400 leading-relaxed font-medium">
+                <p className="text-xs text-slate-500 leading-relaxed font-normal">
                   Er. Naveed Malik personally audits and manages Phase 01 strategy and Phase 05 reporting for every client retainer.
                 </p>
               </div>
 
-              {/* Right-Aligned Consultation CTA Button */}
+              {/* Action Button */}
               <div className="pt-2">
                 <Link
                   href="/contact"
                   onClick={playClick}
                   onMouseEnter={playHover}
-                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black font-black text-xs uppercase tracking-widest py-4 rounded-xl transition-all shadow-lg shadow-amber-500/20"
+                  className="btn-orange w-full flex items-center justify-center gap-2 text-center text-sm font-semibold"
                 >
                   <span>Initiate Phase 01 Audit Call</span>
-                  <ArrowUpRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
 

@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { X, ArrowUpRight, TrendingUp, Award, Eye, BarChart2, Sparkles, ExternalLink, ArrowRight } from "lucide-react";
+import { X, ArrowUpRight, TrendingUp, Award, BarChart2, Sparkles, ExternalLink, ArrowRight, CheckCircle2 } from "lucide-react";
 import { useSound } from "@/hooks/useSound";
 import SectionHeader from "@/components/shared/SectionHeader";
+import Link from "next/link";
 
 const projects = [
   {
@@ -16,7 +17,7 @@ const projects = [
     result: "Significantly decreased drop-off rate and increased admissions registrations.",
     metric: "+54% Registration Rate",
     metricIcon: Award,
-    color: "#F59E0B",
+    color: "#14B8C4",
     url: "https://www.cambridgeeducation.in",
   },
   {
@@ -29,7 +30,7 @@ const projects = [
     result: "Achieved sub-1s load times, boosting overseas student consulting leads.",
     metric: "4.8× ROAS Lift",
     metricIcon: TrendingUp,
-    color: "#10B981",
+    color: "#14B8C4",
     url: "https://www.gostudyedu.in",
   },
   {
@@ -42,7 +43,7 @@ const projects = [
     result: "Enhanced operations speed by removing manual entry bottlenecks.",
     metric: "+84% CRM Speed",
     metricIcon: BarChart2,
-    color: "#FF5A1F",
+    color: "#14B8C4",
     url: "https://www.campusdisha.in",
   },
   {
@@ -55,7 +56,7 @@ const projects = [
     result: "Unified visual presence across all touchpoints, creating measurable brand-trust lift.",
     metric: "+48% Brand Trust",
     metricIcon: Award,
-    color: "#8B5CF6",
+    color: "#F7931E",
     url: "#",
   },
   {
@@ -64,11 +65,11 @@ const projects = [
     title: "OmniWellness Brand Kit",
     desc: "Cohesive multi-platform content assets and template systems.",
     challenge: "Fractured graphics making the brand look amateur and disorganized online.",
-    strategy: "Clean grid rules and templates using custom typography and rich dark tones.",
+    strategy: "Clean grid rules and templates using custom typography and rich tones.",
     result: "Visual consistency that significantly boosted organic saves and shares.",
     metric: "+114% Engagement",
     metricIcon: Sparkles,
-    color: "#F59E0B",
+    color: "#F7931E",
     url: "#",
   },
   {
@@ -81,7 +82,7 @@ const projects = [
     result: "Shortened sales cycle duration while boosting pipeline margins.",
     metric: "+28% Profit Margin",
     metricIcon: TrendingUp,
-    color: "#64748B",
+    color: "#14B8C4",
     url: "#",
   },
 ];
@@ -96,7 +97,7 @@ export default function Portfolio() {
   const list = cat === "All" ? projects : projects.filter((p) => p.cat === cat);
 
   return (
-    <section id="portfolio" className="section-pad-luxury bg-zinc-950 font-sans border-b border-zinc-900 select-none">
+    <section id="portfolio" className="section-pad bg-[#F8FAFC] font-sans border-b border-slate-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* Section Header */}
@@ -106,10 +107,11 @@ export default function Portfolio() {
           gradientTitle="Real Businesses."
           subtitle="Review verified client case studies, web applications, and growth architectures engineered by IMMNAVEED."
           actionLink={{ label: "Request Custom Case Audit", href: "/contact" }}
+          theme="light"
         />
 
         {/* Filter Tabs */}
-        <div className="flex gap-2 mb-8 overflow-x-auto pb-2 scrollbar-hide">
+        <div className="flex gap-2.5 mb-10 overflow-x-auto pb-2 scrollbar-hide">
           {cats.map((c) => (
             <button
               key={c}
@@ -118,10 +120,10 @@ export default function Portfolio() {
                 setCat(c);
               }}
               onMouseEnter={playHover}
-              className={`flex-shrink-0 px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest transition-all cursor-pointer ${
+              className={`flex-shrink-0 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                 cat === c
-                  ? "bg-amber-500 text-black shadow-lg shadow-amber-500/20"
-                  : "bg-zinc-900 text-zinc-400 border border-zinc-800 hover:text-white"
+                  ? "bg-[#041E42] text-white shadow-md font-extrabold"
+                  : "bg-white text-slate-600 border border-slate-200 hover:border-[#14B8C4] hover:text-[#041E42]"
               }`}
             >
               {c}
@@ -141,37 +143,36 @@ export default function Portfolio() {
                   setDetail(p);
                 }}
                 onMouseEnter={playHover}
-                className="luxury-card rounded-2xl overflow-hidden group border border-zinc-800 bg-zinc-900/60 cursor-pointer flex flex-col justify-between"
+                className="card-white p-6 sm:p-7 flex flex-col justify-between group cursor-pointer"
               >
-                {/* Visual Header */}
-                <div className="p-6 pb-4 border-b border-zinc-800/80 bg-gradient-to-br from-zinc-900 to-zinc-950 relative">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/30 text-amber-400">
+                <div>
+                  {/* Top Metadata */}
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="badge-teal text-[10px] py-1 px-3">
                       {p.cat} Client
                     </span>
-                    <span className="text-xs font-black text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 flex items-center gap-1">
-                      <Icon className="w-3 h-3" /> {p.metric}
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200">
+                      <Icon className="w-3 h-3 text-emerald-600" /> {p.metric}
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-black text-white group-hover:text-amber-400 transition-colors leading-snug mb-2">
+                  <h3 className="font-display text-lg font-bold text-[#0F172A] group-hover:text-[#0E8A94] transition-colors leading-snug mb-2.5">
                     {p.title}
                   </h3>
-                  <p className="text-xs text-zinc-400 leading-relaxed font-medium line-clamp-2">
+                  <p className="text-xs text-slate-500 leading-relaxed mb-6 font-normal">
                     {p.desc}
                   </p>
                 </div>
 
-                {/* Body Details */}
-                <div className="p-6 pt-4 flex items-center justify-between bg-zinc-950">
-                  <span className="text-[11px] font-bold text-zinc-500 group-hover:text-zinc-300 transition-colors">
+                {/* Card Footer */}
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-[11px] font-semibold text-slate-400">
                     Verified Execution
                   </span>
                   
-                  {/* Right-Aligned Case Link Button */}
-                  <span className="text-xs font-black text-amber-400 group-hover:text-amber-300 uppercase tracking-widest flex items-center gap-1">
+                  <span className="text-xs font-bold text-[#0E8A94] group-hover:text-[#041E42] uppercase tracking-wider flex items-center gap-1 transition-colors">
                     <span>View Breakdown</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </span>
                 </div>
               </div>
@@ -184,58 +185,62 @@ export default function Portfolio() {
       {detail && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div
-            className="absolute inset-0 bg-black/80 backdrop-blur-md transition-opacity"
+            className="absolute inset-0 bg-[#031730]/80 backdrop-blur-md transition-opacity"
             onClick={() => {
               playClick();
               setDetail(null);
             }}
           />
-          <div className="relative z-10 bg-zinc-950 w-full max-w-xl rounded-3xl shadow-2xl overflow-hidden border border-zinc-800 animate-fadeIn">
-            <div className="h-1 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-600" />
+          <div className="relative z-10 bg-[#041E42] text-white w-full max-w-xl rounded-3xl shadow-2xl overflow-hidden border border-slate-700/60 animate-fadeIn">
+            {/* Top Teal Accent Strip */}
+            <div className="h-1.5 bg-gradient-to-r from-[#14B8C4] to-[#00D4E0]" />
+
             <div className="p-6 sm:p-8 max-h-[85vh] overflow-y-auto space-y-6">
 
               {/* Modal Header */}
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <span className="text-[9px] font-black uppercase tracking-widest text-amber-400 mb-1 block">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#14B8C4] mb-1 block">
                     {detail.cat} Case Study
                   </span>
-                  <h3 className="text-xl sm:text-2xl font-black text-white leading-tight">{detail.title}</h3>
+                  <h3 className="font-display text-xl sm:text-2xl font-extrabold text-white leading-tight">
+                    {detail.title}
+                  </h3>
                 </div>
                 <button
                   onClick={() => {
                     playClick();
                     setDetail(null);
                   }}
-                  className="p-2.5 rounded-xl bg-zinc-900 text-zinc-400 hover:text-white border border-zinc-800 flex-shrink-0 transition-colors"
+                  className="p-2 rounded-xl bg-[#031730] text-slate-300 hover:text-white hover:bg-slate-800 flex-shrink-0 transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
-              {/* Status Metric Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-500/10 border border-amber-500/30 font-black text-xs text-amber-400 uppercase tracking-widest">
-                <detail.metricIcon className="w-4 h-4" /> {detail.metric}
+              {/* Metric Pill */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-emerald-500/15 border border-emerald-500/30 font-bold text-xs text-emerald-300 uppercase tracking-wider">
+                <detail.metricIcon className="w-4 h-4 text-emerald-400" /> {detail.metric}
               </div>
 
-              {/* Case Details */}
+              {/* Case Breakdown */}
               <div className="space-y-4">
                 {[
                   { label: "The Challenge", text: detail.challenge },
                   { label: "Our Strategy",  text: detail.strategy  },
                   { label: "The Outcome",   text: detail.result    },
                 ].map((s) => (
-                  <div key={s.label} className="bg-zinc-900/80 p-4 rounded-2xl border border-zinc-800/80">
+                  <div key={s.label} className="bg-[#031730] p-4 rounded-2xl border border-slate-700/60">
                     <div className="flex items-center gap-2 mb-1.5">
-                      <span className="w-2 h-2 rounded-full bg-amber-500" />
-                      <p className="text-[10px] font-black text-amber-400 uppercase tracking-widest">{s.label}</p>
+                      <CheckCircle2 className="w-4 h-4 text-[#14B8C4]" />
+                      <p className="text-[11px] font-black text-[#14B8C4] uppercase tracking-wider">{s.label}</p>
                     </div>
-                    <p className="text-xs text-zinc-300 leading-relaxed font-medium">{s.text}</p>
+                    <p className="text-xs text-slate-200 leading-relaxed font-normal">{s.text}</p>
                   </div>
                 ))}
               </div>
 
-              {/* Action Buttons (Right-aligned Primary Trigger) */}
+              {/* Actions */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                 {detail.url && detail.url !== "#" ? (
                   <a
@@ -243,31 +248,31 @@ export default function Portfolio() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={playClick}
-                    className="flex items-center justify-center gap-2 w-full border border-zinc-800 text-zinc-300 hover:text-white hover:bg-zinc-900 font-black text-xs uppercase tracking-widest py-3.5 rounded-xl transition-all"
+                    className="btn-white text-center text-xs font-bold"
                   >
                     <span>Visit Live Website</span>
-                    <ExternalLink className="w-4 h-4" />
+                    <ExternalLink className="w-3.5 h-3.5 text-[#041E42]" />
                   </a>
                 ) : (
                   <button
                     disabled
-                    className="flex items-center justify-center gap-2 w-full border border-zinc-800 text-zinc-500 font-black text-xs uppercase tracking-widest py-3.5 rounded-xl cursor-not-allowed"
+                    className="btn-white opacity-50 cursor-not-allowed text-center text-xs font-bold"
                   >
                     Internal Client Case
                   </button>
                 )}
 
-                <a
+                <Link
                   href="/contact"
                   onClick={() => {
                     playClick();
                     setDetail(null);
                   }}
-                  className="flex items-center justify-center gap-2 w-full bg-amber-500 hover:bg-amber-600 text-black font-black text-xs uppercase tracking-widest py-3.5 rounded-xl transition-all shadow-lg shadow-amber-500/20"
+                  className="btn-orange text-center text-xs font-bold"
                 >
                   <span>Discuss Strategy Call</span>
                   <ArrowRight className="w-4 h-4" />
-                </a>
+                </Link>
               </div>
 
             </div>

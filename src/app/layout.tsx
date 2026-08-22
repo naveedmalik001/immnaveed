@@ -11,7 +11,7 @@ const inter = Inter({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#ff5a1f",
+  themeColor: "#0B1E36",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="font-sans bg-white text-brand-black antialiased min-h-screen">
+      <body className="font-sans bg-[#081627] text-white antialiased min-h-screen">
         {children}
         <FloatingContact />
       </body>

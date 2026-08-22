@@ -1,75 +1,74 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { servicesData } from "@/data/services";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import SectionHeader from "@/components/shared/SectionHeader";
+import { useSound } from "@/hooks/useSound";
 
 export default function Services() {
   const [showAll, setShowAll] = useState(false);
+  const { playClick, playHover } = useSound();
 
-  // Take first 6 for default view
   const displayed = showAll ? servicesData : servicesData.slice(0, 6);
 
   return (
-    <section id="services" className="section-pad bg-brand-gray">
+    <section id="services" className="section-pad bg-[#F8FAFC] border-b border-slate-200 font-sans">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
-        {/* Label + heading */}
-        <div className="flex items-center gap-3 mb-4">
-          <div className="h-px w-8 bg-brand-orange" />
-          <span className="text-xs font-black tracking-widest text-brand-orange uppercase">
-            Corporate Capabilities
-          </span>
-        </div>
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-black leading-tight">
-            Every Service You Need<br />
-            <span className="text-gradient">to Scale Your Business.</span>
-          </h2>
-          <p className="text-sm text-neutral-500 max-w-xs sm:text-right">
-            Dedicated growth strategies, engineering, and performance marketing.
-          </p>
-        </div>
+        {/* Section Header */}
+        <SectionHeader
+          badgeText="Corporate Capabilities"
+          title="Every Capability You Need"
+          gradientTitle="to Scale Your Business."
+          subtitle="Dedicated growth strategies, Next.js software architecture, and high-ROAS performance marketing."
+          theme="light"
+        />
 
         {/* Cards grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
           {displayed.map(s => {
             const Icon = s.icon;
             return (
               <Link
                 href={`/services/${s.slug}`}
                 key={s.id}
-                className="text-left bg-white border border-neutral-100 rounded-2xl p-5 sm:p-6 card-hover group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange cursor-pointer block"
+                onClick={playClick}
+                onMouseEnter={playHover}
+                className="text-left bg-white border border-slate-200 rounded-3xl p-6 sm:p-7 card-white group focus:outline-none cursor-pointer flex flex-col justify-between"
               >
-                {/* Top row */}
-                <div className="flex items-start justify-between mb-4 sm:mb-5">
-                  <div className={`w-12 h-12 rounded-xl ${s.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-200`}>
-                    <Icon className="w-6 h-6" />
-                  </div>
-                  <span className="text-[9px] font-black uppercase tracking-wider bg-neutral-100 text-neutral-600 px-2.5 py-1 rounded-full">
-                    {s.category}
-                  </span>
-                </div>
-
-                <h3 className="text-lg sm:text-xl font-black text-brand-black mb-2 group-hover:text-brand-orange transition-colors">
-                  {s.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-neutral-500 leading-relaxed mb-5">
-                  {s.shortDescription}
-                </p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-1.5 mb-5">
-                  {s.features.slice(0, 3).map((t: string) => (
-                    <span key={t} className="text-[10px] font-semibold text-neutral-500 bg-neutral-50 px-2.5 py-1 rounded-full">
-                      {t}
+                <div>
+                  {/* Top row */}
+                  <div className="flex items-start justify-between mb-5">
+                    <div className="w-12 h-12 rounded-2xl bg-[#14B8C4]/10 border border-[#14B8C4]/20 flex items-center justify-center text-[#0E8A94] group-hover:scale-110 group-hover:bg-[#14B8C4] group-hover:text-white transition-all duration-200">
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <span className="badge-teal text-[9px] py-1 px-3">
+                      {s.category}
                     </span>
-                  ))}
+                  </div>
+
+                  <h3 className="font-display text-lg sm:text-xl font-bold text-[#0F172A] mb-2 group-hover:text-[#0E8A94] transition-colors">
+                    {s.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-500 leading-relaxed mb-6 font-normal">
+                    {s.shortDescription}
+                  </p>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-1.5 mb-6">
+                    {s.features.slice(0, 3).map((t: string) => (
+                      <span key={t} className="text-[10px] font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
-                <div className="flex items-center gap-1.5 text-sm font-bold text-brand-orange group-hover:gap-2.5 transition-all">
-                  View Full Details <ArrowRight className="w-4 h-4" />
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-[#0E8A94] group-hover:text-[#041E42] uppercase tracking-wider transition-colors">
+                  <span>View Full Details</span>
+                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
               </Link>
             );
@@ -78,13 +77,15 @@ export default function Services() {
 
         {/* View more */}
         {servicesData.length > 6 && (
-          <div className="flex justify-center mt-8 sm:mt-12">
+          <div className="flex justify-center mt-10">
             <button
-              onClick={() => setShowAll(!showAll)}
-              className="inline-flex items-center gap-2 border-2 border-brand-black text-brand-black font-bold text-sm px-6 sm:px-7 py-3 sm:py-3.5 rounded-full hover:bg-brand-black hover:text-white transition-all duration-200 cursor-pointer"
+              onClick={() => {
+                playClick();
+                setShowAll(!showAll);
+              }}
+              className="btn-white text-xs font-bold uppercase tracking-wider py-3 px-6 rounded-2xl border border-slate-300 hover:border-[#14B8C4]"
             >
-              {showAll ? "Show Less" : `View All ${servicesData.length} Services`}
-              <ArrowRight className={`w-4 h-4 transition-transform ${showAll ? "-rotate-90" : "rotate-90"}`} />
+              {showAll ? "Show Less" : `View All ${servicesData.length} Capabilities`}
             </button>
           </div>
         )}

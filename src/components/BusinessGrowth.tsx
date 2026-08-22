@@ -1,97 +1,93 @@
 "use client";
 
+import React from "react";
 import { Search, Compass, Target, TrendingUp, CheckCircle, ArrowRight } from "lucide-react";
+import SectionHeader from "@/components/shared/SectionHeader";
+import Link from "next/link";
+import { useSound } from "@/hooks/useSound";
 
 const steps = [
   {
     phase: "Phase 01", icon: Search,
     title: "Discovery & Positioning Audit",
-    desc: "We analyse your business model, audit customer acquisition costs, and map competitor whitespace to find your unfair advantage before we do anything else.",
-    deliverables: ["Competitor Analysis", "CAC Audit", "Audience Blueprint", "Growth Leak Report"],
+    desc: "We analyze your business model, audit customer acquisition costs, and map competitor whitespace to find your unfair advantage before we deploy ad spend.",
+    deliverables: ["Competitor Gap Analysis", "CAC Feasibility Audit", "Audience Blueprint", "Growth Leak Report"],
     stat: "72h", statLabel: "Audit Turnaround",
-    iconColor: "bg-blue-100 text-blue-600",
+    iconColor: "bg-[#14B8C4]/15 border-[#14B8C4]/30 text-[#14B8C4]",
   },
   {
     phase: "Phase 02", icon: Compass,
-    title: "Brand & UX Foundation",
-    desc: "We build your complete visual identity and engineer high-speed Next.js pages designed to lock in trust from the very first second of interaction.",
-    deliverables: ["Brand Style Guide", "Logo Marks", "SEO-Optimised Pages", "Typography System"],
+    title: "Brand & High-Speed UX Foundation",
+    desc: "We build your complete visual identity and engineer sub-1s Next.js pages designed to lock in market trust from the very first second of interaction.",
+    deliverables: ["Executive Brand Guidelines", "Custom Logo Marks", "SEO Structured Schema", "Bespoke Typography"],
     stat: "14d", statLabel: "Brand Delivery",
-    iconColor: "bg-orange-100 text-brand-orange",
+    iconColor: "bg-[#F7931E]/15 border-[#F7931E]/30 text-[#F7931E]",
   },
   {
     phase: "Phase 03", icon: Target,
-    title: "High-Performance Funnels",
-    desc: "We launch multi-touch Meta campaigns, optimised landing pages, and high-impact reel content to generate a consistent flow of premium inbound leads.",
-    deliverables: ["Meta Ads Framework", "Short-Form Engine", "Lead Capture", "A/B Test Structure"],
+    title: "High-Performance Ad Funnels",
+    desc: "We launch multi-touch Meta and Google Search campaigns with optimized landing pages and high-impact reel creatives to generate high-intent inbound leads.",
+    deliverables: ["Meta Ads Framework", "Short-Form Creative Engine", "Lead Capture Automation", "A/B Testing Matrix"],
     stat: "4.8×", statLabel: "Average ROAS",
-    iconColor: "bg-emerald-100 text-emerald-600",
+    iconColor: "bg-emerald-500/15 border-emerald-500/30 text-emerald-400",
   },
   {
     phase: "Phase 04", icon: TrendingUp,
-    title: "Automation & Scale",
-    desc: "We integrate custom ERP automations to manage leads seamlessly and scale high-performing campaigns to maximise ROAS across all channels.",
-    deliverables: ["ERP Dashboards", "Scaling Roadmaps", "Attribution Tracking", "Monthly Reports"],
+    title: "Automation, Retainers & Scale",
+    desc: "We integrate custom ERP automations to manage leads seamlessly and scale high-performing campaigns to maximize ROAS across all channels.",
+    deliverables: ["Custom CRM Pipelines", "Quarterly Scaling Roadmaps", "Multi-Touch Attribution", "Monthly Executive Reviews"],
     stat: "90d", statLabel: "Full Scale",
-    iconColor: "bg-purple-100 text-purple-600",
+    iconColor: "bg-[#14B8C4]/15 border-[#14B8C4]/30 text-[#14B8C4]",
   },
 ];
 
 export default function BusinessGrowth() {
+  const { playClick, playHover } = useSound();
+
   return (
-    <section id="process" className="section-pad bg-brand-gray">
+    <section id="process" className="section-pad bg-gradient-to-b from-[#041E42] to-[#031730] border-b border-slate-800 font-sans">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
-        {/* Label */}
-        <div className="flex items-center gap-3 mb-4">
-          <div className="h-px w-8 bg-brand-orange" />
-          <span className="text-xs font-black tracking-widest text-brand-orange uppercase">
-            Our Scaling Engine
-          </span>
-        </div>
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-12">
-          <h2 className="text-3xl sm:text-4xl font-black text-brand-black leading-tight">
-            How We Build Systems<br />
-            <span className="text-gradient">That Scale Businesses.</span>
-          </h2>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 bg-brand-orange text-white font-bold text-sm px-6 py-3.5 rounded-full hover:bg-orange-600 transition-colors self-start md:self-auto shadow-lg shadow-orange-200"
-          >
-            Start the Process <ArrowRight className="w-4 h-4" />
-          </a>
-        </div>
+        {/* Section Header */}
+        <SectionHeader
+          badgeText="Our Scaling Engine"
+          title="How We Build Systems"
+          gradientTitle="That Scale Businesses."
+          subtitle="We combine empirical market analysis, sub-1s software engineering, and high-ROAS performance marketing into one repeatable growth cycle."
+          actionLink={{ label: "Initiate Audit Call", href: "/contact" }}
+          theme="dark"
+        />
 
-        {/* Steps — stacked on mobile, side-by-side on lg */}
-        <div className="space-y-4">
-          {steps.map((step, i) => {
+        {/* Steps */}
+        <div className="space-y-4 mt-8">
+          {steps.map((step) => {
             const Icon = step.icon;
             return (
               <div
                 key={step.phase}
-                className="bg-white border border-neutral-100 rounded-2xl overflow-hidden card-hover group"
+                className="card-navy bg-[#082852]/90 border border-slate-700/80 rounded-3xl overflow-hidden group hover:border-[#14B8C4] transition-all shadow-xl"
               >
                 <div className="grid grid-cols-1 md:grid-cols-12">
                   {/* Main content */}
-                  <div className="md:col-span-9 p-5 sm:p-6">
+                  <div className="md:col-span-9 p-6 sm:p-7">
                     <div className="flex items-start gap-4">
-                      <div className={`w-12 h-12 rounded-2xl ${step.iconColor} flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform`}>
+                      <div className={`w-12 h-12 rounded-2xl border ${step.iconColor} flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform`}>
                         <Icon className="w-5 h-5" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <span className="text-[10px] font-black text-brand-orange uppercase tracking-wider block mb-1">
+                        <span className="text-[10px] font-bold text-[#14B8C4] uppercase tracking-wider block mb-1">
                           {step.phase}
                         </span>
-                        <h3 className="text-base font-black text-brand-black mb-2 group-hover:text-brand-orange transition-colors">
+                        <h3 className="font-display text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-[#14B8C4] transition-colors">
                           {step.title}
                         </h3>
-                        <p className="text-sm text-neutral-500 leading-relaxed mb-4">
+                        <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-5 font-normal">
                           {step.desc}
                         </p>
                         <div className="flex flex-wrap gap-2">
                           {step.deliverables.map(d => (
-                            <span key={d} className="inline-flex items-center gap-1 bg-neutral-50 border border-neutral-100 text-[11px] font-semibold text-neutral-600 px-3 py-1.5 rounded-full">
-                              <CheckCircle className="w-3 h-3 text-brand-orange" /> {d}
+                            <span key={d} className="inline-flex items-center gap-1.5 bg-[#031730] border border-slate-700/80 text-[11px] font-semibold text-slate-200 px-3 py-1.5 rounded-full">
+                              <CheckCircle className="w-3.5 h-3.5 text-[#14B8C4]" /> {d}
                             </span>
                           ))}
                         </div>
@@ -100,17 +96,18 @@ export default function BusinessGrowth() {
                   </div>
 
                   {/* Stat panel */}
-                  <div className="md:col-span-3 bg-neutral-50 border-t md:border-t-0 md:border-l border-neutral-100 flex flex-row md:flex-col items-center justify-center gap-3 md:gap-1 p-4 md:p-6 text-center">
-                    <p className="text-3xl md:text-4xl font-black text-brand-black group-hover:text-brand-orange transition-colors">
+                  <div className="md:col-span-3 bg-[#031730]/90 border-t md:border-t-0 md:border-l border-slate-700/80 flex flex-row md:flex-col items-center justify-center gap-3 md:gap-1 p-5 md:p-6 text-center">
+                    <p className="font-display text-3xl md:text-4xl font-extrabold text-white group-hover:text-[#F7931E] transition-colors">
                       {step.stat}
                     </p>
-                    <p className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider">{step.statLabel}</p>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{step.statLabel}</p>
                   </div>
                 </div>
               </div>
             );
           })}
         </div>
+
       </div>
     </section>
   );
