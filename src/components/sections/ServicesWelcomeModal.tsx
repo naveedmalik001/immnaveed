@@ -16,12 +16,7 @@ import {
   BarChart3,
   Camera,
   ShieldCheck,
-  Zap,
-  Globe,
   Cpu,
-  Layers,
-  CheckCircle2,
-  ExternalLink,
 } from "lucide-react";
 import { useSound } from "@/hooks/useSound";
 
@@ -55,7 +50,7 @@ const pillars: PillarData[] = [
     headerIcon: Cpu,
     items: [
       {
-        title: "Website Design & Next.js 15 Apps",
+        title: "Website Design & Next.js Development",
         tag: "Sub-1s LCP",
         desc: "Modern Figma UI/UX prototyping and high-speed web apps.",
         slug: "website-design-development",
@@ -63,8 +58,8 @@ const pillars: PillarData[] = [
       },
       {
         title: "Custom Software & ERP Systems",
-        tag: "Schools & Clinics",
-        desc: "Dedicated ERPs for education, hospitals, and operations.",
+        tag: "Schools/Clinics",
+        desc: "Dedicated ERPs for education, hospitals, and business.",
         slug: "custom-software-erp-development",
         icon: Server,
       },
@@ -90,7 +85,7 @@ const pillars: PillarData[] = [
       {
         title: "4K Video Shoots & Viral Reels",
         tag: "Cinema Gear",
-        desc: "On-location multi-camera cinema filming & aerial drones.",
+        desc: "On-location cinema filming, drone shots & viral reels.",
         slug: "video-shoots-reel-production",
         icon: Video,
       },
@@ -102,7 +97,7 @@ const pillars: PillarData[] = [
         icon: Film,
       },
       {
-        title: "Luxury Wedding & Event Production",
+        title: "Luxury Wedding & Event Coverage",
         tag: "Cinematic Film",
         desc: "Pre-wedding shoots, drone coverage & luxury films.",
         slug: "wedding-shoots-event-production",
@@ -121,14 +116,14 @@ const pillars: PillarData[] = [
     headerIcon: TrendingUp,
     items: [
       {
-        title: "Social Media Marketing (Meta & Google Ads)",
+        title: "Social Media Marketing (Meta/Google)",
         tag: "Paid Scaling",
         desc: "Full-funnel Meta & Google Search ad architecture.",
         slug: "social-media-marketing",
         icon: Target,
       },
       {
-        title: "Business Growth & Strategy Consultation",
+        title: "Business Growth & Strategy Advisory",
         tag: "1-on-1 Advisory",
         desc: "Executive growth audit, unit economics & scaling roadmaps.",
         slug: "business-growth-consulting",
@@ -156,7 +151,7 @@ export default function ServicesWelcomeModal() {
     if (!hasSeen) {
       const timer = setTimeout(() => {
         setIsOpen(true);
-      }, 700);
+      }, 600);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -179,7 +174,7 @@ export default function ServicesWelcomeModal() {
       />
 
       {/* Main Luxury Splash Overlay Container */}
-      <div className="relative z-10 w-full max-w-5xl bg-[#0B0F19]/95 text-white rounded-[32px] sm:rounded-[36px] shadow-[0_0_80px_-15px_rgba(20,184,196,0.25)] border border-slate-800/90 overflow-hidden flex flex-col my-auto transition-all duration-300 animate-fadeIn">
+      <div className="relative z-10 w-full max-w-5xl bg-[#0B0F19]/98 text-white rounded-[32px] sm:rounded-[36px] shadow-[0_0_80px_-15px_rgba(20,184,196,0.25)] border border-slate-800/90 overflow-hidden flex flex-col my-auto transition-all duration-300 animate-fadeIn">
         
         {/* Ambient Top Glow Orbs */}
         <div className="absolute w-[450px] h-[250px] -top-24 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#14B8C4]/25 via-[#00D4E0]/20 to-[#F7931E]/20 rounded-full blur-3xl pointer-events-none" />
@@ -218,7 +213,7 @@ export default function ServicesWelcomeModal() {
             <button
               onClick={handleClose}
               onMouseEnter={playHover}
-              className="p-2.5 rounded-2xl bg-[#101726] border border-slate-800 text-slate-400 hover:text-white hover:border-[#14B8C4] hover:bg-[#14B8C4]/10 transition-all cursor-pointer flex-shrink-0"
+              className="p-2.5 rounded-2xl bg-[#101726] border border-slate-700 text-slate-300 hover:text-white hover:border-[#14B8C4] hover:bg-[#14B8C4]/10 transition-all cursor-pointer flex-shrink-0"
               aria-label="Close Splash Screen"
               title="Close & Enter Site"
             >
@@ -287,8 +282,8 @@ export default function ServicesWelcomeModal() {
                               <ItemIcon className="w-4 h-4" />
                             </div>
                             <div className="flex-1 min-w-0">
-                              <div className="flex items-center justify-between gap-1 mb-0.5">
-                                <span className="font-display text-xs font-bold text-slate-100 group-hover/item:text-[#14B8C4] transition-colors truncate">
+                              <div className="flex items-center justify-between gap-1.5 mb-0.5">
+                                <span className="font-display text-xs font-bold text-slate-100 group-hover/item:text-[#14B8C4] transition-colors leading-tight">
                                   {item.title}
                                 </span>
                                 <span className="text-[9px] font-bold uppercase text-slate-400 bg-slate-800/80 px-1.5 py-0.5 rounded flex-shrink-0">
