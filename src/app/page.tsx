@@ -8,7 +8,6 @@ import ServicesAccordion from "@/components/sections/ServicesAccordion";
 import FounderSpotlight from "@/components/sections/FounderSpotlight";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Testimonials from "@/components/Testimonials";
-import InstagramFeed from "@/components/sections/InstagramFeed";
 import BookingWidget from "@/components/sections/BookingWidget";
 import Footer from "@/components/Footer";
 
@@ -20,19 +19,19 @@ export default function Home() {
 
       {/* Main Flow */}
       <main className="flex-grow">
-        {/* 2. Hero with Cambridge Navy, Teal Gradients & Floating Stat Cards */}
+        {/* 2. Hero with Web & ERP Engineering, Marketing & Video Production */}
         <Hero />
 
         {/* 3. Proof Marquee & Verified Client Network (Clean White Section) */}
         <ProofMarquee />
 
-        {/* 4. The 7 Core Real Services (Clean Light Section) */}
+        {/* 4. The Core Real Services Grid (Clean Light Section) */}
         <Services />
 
-        {/* 5. Interactive Reels & Video Editing Portfolio Showcase */}
+        {/* 5. Live Verified 8 Instagram Reels & Video Production Showcase */}
         <ReelsShowcase />
 
-        {/* 6. In-Depth 7 Core Capabilities Accordion (Deep Navy Section) */}
+        {/* 6. In-Depth Capabilities Accordion (Deep Navy Section) */}
         <ServicesAccordion />
 
         {/* 7. Founder Spotlight — Er. Naveed Malik (Deep Navy Section) */}
@@ -44,14 +43,11 @@ export default function Home() {
         {/* 9. Partner Endorsements & Testimonials (Clean Slate Section) */}
         <Testimonials />
 
-        {/* 10. Social Authority & Instagram Insights (Clean Light Section) */}
-        <InstagramFeed />
-
-        {/* 11. Direct Strategy Consultation Booking Widget (Deep Navy Section) */}
+        {/* 10. Direct Strategy Consultation Booking Widget (Deep Navy Section) */}
         <BookingWidget />
       </main>
 
-      {/* 12. Executive Footer */}
+      {/* 11. Executive Footer */}
       <Footer />
     </div>
   );

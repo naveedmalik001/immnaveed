@@ -2,8 +2,9 @@
 
 import React from "react";
 import SectionHeader from "@/components/shared/SectionHeader";
-import { ExternalLink, Heart, MessageCircle, ArrowUpRight } from "lucide-react";
+import { ExternalLink, Play, ArrowUpRight } from "lucide-react";
 import { useSound } from "@/hooks/useSound";
+import { reelsData } from "@/data/reels-data";
 
 function InstagramIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
@@ -15,63 +16,6 @@ function InstagramIcon({ className = "w-5 h-5" }: { className?: string }) {
   );
 }
 
-const instagramPosts = [
-  {
-    id: "ig-1",
-    tag: "Brand Strategy",
-    title: "Why Generic Websites Fail High-Ticket Conversion",
-    caption: "Stop using template designs. High-net-worth clients look for authority positioning, crisp typography, and sub-1s load times.",
-    likes: "142",
-    comments: "28",
-    url: "https://www.instagram.com/immnaveed",
-  },
-  {
-    id: "ig-2",
-    tag: "Meta Ads ROAS",
-    title: "How We Scaled Client Revenue to 4.8× ROAS",
-    caption: "Creative A/B testing and direct intent targeting outperform mass broad spending every single time.",
-    likes: "189",
-    comments: "34",
-    url: "https://www.instagram.com/immnaveed",
-  },
-  {
-    id: "ig-3",
-    tag: "Web Engineering",
-    title: "Next.js 15 vs Traditional WordPress for Enterprises",
-    caption: "Why sub-800ms Lighthouse scores directly increase Google SEO rankings and cut acquisition costs by 35%.",
-    likes: "210",
-    comments: "45",
-    url: "https://www.instagram.com/immnaveed",
-  },
-  {
-    id: "ig-4",
-    tag: "EdTech Growth",
-    title: "Cambridge Education Admissions Funnel Breakdown",
-    caption: "Integrating WhatsApp API auto-responders reduced counselor lead follow-up time from 6 hours to 45 seconds.",
-    likes: "176",
-    comments: "31",
-    url: "https://www.instagram.com/immnaveed",
-  },
-  {
-    id: "ig-5",
-    tag: "Executive Mindset",
-    title: "The 3 Moats Every Modern Founder Must Build",
-    caption: "1. Brand Identity Authority, 2. Automated Inbound Engine, 3. Proprietary Software Systems.",
-    likes: "254",
-    comments: "52",
-    url: "https://www.instagram.com/immnaveed",
-  },
-  {
-    id: "ig-6",
-    tag: "Case Study",
-    title: "GoStudy Abroad Consulting 0-to-1 Scale",
-    caption: "Transforming overseas education lead generation through interactive course matchers and real-time scheduling.",
-    likes: "198",
-    comments: "39",
-    url: "https://www.instagram.com/immnaveed",
-  },
-];
-
 export default function InstagramFeed() {
   const { playClick, playHover } = useSound();
 
@@ -81,10 +25,10 @@ export default function InstagramFeed() {
         
         {/* Header */}
         <SectionHeader
-          badgeText="Social Authority & Insights"
-          title="Direct Insights from"
+          badgeText="Social Authority & Video Production"
+          title="Direct Video Work on"
           gradientTitle="Instagram (@immnaveed)."
-          subtitle="Follow Er. Naveed Malik on Instagram for daily breakdowns on executive brand strategy, Meta ad architecture, and Next.js engineering."
+          subtitle="Watch our live reel edits, talking head series, and brand commercials directly on Instagram."
           actionLink={{ label: "Follow @immnaveed", href: "https://www.instagram.com/immnaveed" }}
           theme="light"
         />
@@ -99,86 +43,63 @@ export default function InstagramFeed() {
               <div className="flex items-center gap-2">
                 <h3 className="font-display text-lg font-bold text-[#0F172A]">@immnaveed</h3>
                 <span className="badge-teal text-[9px] py-0.5 px-2.5">
-                  Official Profile
+                  Official Creator Profile
                 </span>
               </div>
               <p className="text-xs text-slate-500 font-normal mt-0.5">
-                Brand Strategist · Growth Consultant · Next.js Software Architecture
+                Brand Strategist · Media Production · Next.js Software Architecture
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-8 border-t md:border-t-0 md:border-l border-slate-200 pt-4 md:pt-0 md:pl-8">
-            <div className="text-center md:text-left">
-              <p className="font-display text-lg sm:text-xl font-bold text-[#0F172A]">900+</p>
-              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Founders &amp; Marketers</p>
-            </div>
-            <div className="text-center md:text-left">
-              <p className="font-display text-lg sm:text-xl font-bold text-[#0F172A]">60+</p>
-              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Strategy Breakdowns</p>
-            </div>
-            <div className="hidden sm:block">
-              <a
-                href="https://www.instagram.com/immnaveed"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={playClick}
-                onMouseEnter={playHover}
-                className="btn-teal"
-              >
-                <span>Visit Instagram</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Content Posts Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {instagramPosts.map((post) => (
+          <div className="flex items-center gap-6">
             <a
-              key={post.id}
-              href={post.url}
+              href="https://www.instagram.com/immnaveed"
               target="_blank"
               rel="noopener noreferrer"
               onClick={playClick}
               onMouseEnter={playHover}
-              className="card-white p-6 group cursor-pointer flex flex-col justify-between"
+              className="btn-teal"
+            >
+              <span>Visit Instagram Feed</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
+
+        {/* Real Reels Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {reelsData.slice(0, 4).map((reel) => (
+            <a
+              key={reel.id}
+              href={reel.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={playClick}
+              onMouseEnter={playHover}
+              className="card-white p-5 group cursor-pointer flex flex-col justify-between"
             >
               <div>
-                {/* Tag & Icon Row */}
-                <div className="flex items-center justify-between mb-4">
-                  <span className="badge-teal text-[10px] py-1 px-3">
-                    {post.tag}
+                <div className="flex items-center justify-between mb-3">
+                  <span className="badge-teal text-[9px] py-0.5 px-2">
+                    {reel.category}
                   </span>
-                  <div className="w-8 h-8 rounded-xl bg-[#F8FAFC] border border-slate-200 flex items-center justify-center text-slate-500 group-hover:bg-[#14B8C4] group-hover:text-white group-hover:border-[#14B8C4] transition-colors">
-                    <InstagramIcon className="w-4 h-4" />
+                  <div className="w-7 h-7 rounded-lg bg-[#F8FAFC] border border-slate-200 flex items-center justify-center text-slate-500 group-hover:bg-[#14B8C4] group-hover:text-white group-hover:border-[#14B8C4] transition-colors">
+                    <InstagramIcon className="w-3.5 h-3.5" />
                   </div>
                 </div>
 
-                <h4 className="font-display text-base font-bold text-[#0F172A] group-hover:text-[#0E8A94] transition-colors leading-snug mb-2.5">
-                  {post.title}
+                <h4 className="font-display text-sm font-bold text-[#0F172A] group-hover:text-[#0E8A94] transition-colors leading-snug mb-2">
+                  {reel.title}
                 </h4>
-                <p className="text-xs text-slate-500 leading-relaxed font-normal mb-6 line-clamp-3">
-                  {post.caption}
+                <p className="text-xs text-slate-500 leading-relaxed font-normal mb-4 line-clamp-2">
+                  {reel.description}
                 </p>
               </div>
 
-              {/* Card Footer */}
-              <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
-                <div className="flex items-center gap-4">
-                  <span className="flex items-center gap-1 font-semibold text-slate-600">
-                    <Heart className="w-3.5 h-3.5 text-rose-500" /> {post.likes}
-                  </span>
-                  <span className="flex items-center gap-1 font-semibold text-slate-600">
-                    <MessageCircle className="w-3.5 h-3.5 text-[#0E8A94]" /> {post.comments}
-                  </span>
-                </div>
-
-                <span className="text-[11px] font-bold text-[#0E8A94] group-hover:text-[#041E42] uppercase tracking-wider flex items-center gap-1">
-                  <span>Read Post</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </span>
+              <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-[#0E8A94] group-hover:text-[#041E42] font-bold uppercase tracking-wider">
+                <span>Watch on Instagram</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
               </div>
             </a>
           ))}
