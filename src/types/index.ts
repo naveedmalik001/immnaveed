@@ -2,7 +2,7 @@ export interface ServiceItem {
   id: string;
   slug: string;
   title: string;
-  category: "Strategy" | "Engineering" | "Performance" | "Design" | "Consulting";
+  category: "Strategy" | "Engineering" | "Performance" | "Design" | "Consulting" | "Branding" | "Video Production" | "Post Production" | "Analytics" | "Event Production" | string;
   shortDescription: string;
   fullDescription: string;
   deliverables: string[];

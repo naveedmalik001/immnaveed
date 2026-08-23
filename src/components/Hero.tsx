@@ -3,21 +3,21 @@
 import React from "react";
 import Link from "next/link";
 import { useSound } from "@/hooks/useSound";
-import { ArrowRight, Download, MessageCircle, ShieldCheck, Star, Award, TrendingUp, Users } from "lucide-react";
+import { ArrowRight, Film, MessageCircle, ShieldCheck, Star, Award, TrendingUp, Users, Video, BarChart3 } from "lucide-react";
 
 export default function Hero() {
   const { playClick, playHover } = useSound();
 
   return (
-    <section id="hero" className="relative min-h-[92vh] flex items-center overflow-hidden bg-gradient-to-br from-[#041E42] via-[#05244C] to-[#031730] pt-28 pb-20">
+    <section id="hero" className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#F8FAFC] pt-28 pb-20 border-b border-slate-200 font-sans">
 
-      {/* Ambient background glows (like Cambridge Education) */}
-      <div className="absolute w-[600px] h-[600px] -top-40 -left-40 bg-[#0E8A94]/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute w-[700px] h-[700px] -bottom-30 -right-20 bg-[#14B8C4]/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute w-[400px] h-[400px] top-1/4 right-1/4 bg-[#F7931E]/10 rounded-full blur-3xl pointer-events-none" />
+      {/* Subtle Background Glows */}
+      <div className="absolute w-[500px] h-[500px] -top-30 -left-30 bg-[#14B8C4]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute w-[600px] h-[600px] -bottom-30 -right-20 bg-[#0E8A94]/8 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute w-[350px] h-[350px] top-1/3 right-1/4 bg-[#F7931E]/8 rounded-full blur-3xl pointer-events-none" />
 
       {/* Blueprint Grid Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(15,23,42,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -26,138 +26,123 @@ export default function Hero() {
           <div className="lg:col-span-7 flex flex-col items-start text-left">
             
             {/* Eyebrow Badge */}
-            <div className="badge-navy-glow mb-6">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#14B8C4]/12 border border-[#14B8C4]/25 text-[#0E8A94] text-xs font-bold uppercase tracking-wider mb-6 shadow-xs">
               <span className="w-2 h-2 rounded-full bg-[#14B8C4] animate-pulse" />
-              <span>Brand Strategy &amp; Growth Consultant</span>
+              <span>Growth Consulting · Media Production · Performance Marketing</span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="font-display text-4xl sm:text-6xl md:text-7xl font-extrabold text-white leading-[1.08] tracking-tight mb-6">
-              Your Trusted Partner in<br />
-              <span className="block mt-1 text-gradient-teal">Turning Growth Dreams</span>
-              into Reality
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0F172A] leading-[1.08] tracking-tight mb-6">
+              Transforming Businesses with <br />
+              <span className="text-gradient-teal">Growth Strategy, Paid Ads</span><br />
+              &amp; In-House Video Production.
             </h1>
 
             {/* Subtitle */}
-            <p className="text-base md:text-lg leading-relaxed text-slate-300 mb-8 max-w-xl font-normal">
-              Helping ambitious founders secure market authority, deploy high-ROAS Meta &amp; Google ad funnels, and build lightning-fast Next.js digital platforms. Direct advisory from Er. Naveed Malik.
+            <p className="text-base sm:text-lg leading-relaxed text-slate-600 mb-8 max-w-xl font-normal">
+              We help businesses scale with executive business consultation, high-ROAS Meta &amp; Google ad campaigns, custom graphic design, in-house 4K video shoots/reels, data analytics, and cinematic wedding production.
             </p>
 
-            {/* 3-Button Action Row (Orange + White + WhatsApp) */}
-            <div className="flex flex-col sm:flex-row flex-wrap gap-4 w-full sm:w-auto mb-10">
+            {/* 3 Action Buttons */}
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3.5 w-full sm:w-auto mb-10">
               <Link
                 href="/contact"
-                id="hero-strategy-btn"
                 onClick={playClick}
                 onMouseEnter={playHover}
-                className="btn-orange text-sm"
+                className="btn-orange text-sm shadow-md"
               >
-                <span>Schedule Consultation Call</span>
+                <span>Schedule Free Consultation</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
 
               <Link
-                href="/portfolio"
-                id="hero-portfolio-btn"
+                href="#reels-portfolio"
                 onClick={playClick}
                 onMouseEnter={playHover}
-                className="btn-white text-sm"
+                className="btn-white text-sm border border-slate-300 hover:border-[#14B8C4]"
               >
-                <Download className="w-4 h-4 text-[#041E42]" />
-                <span>Explore Client Portfolio</span>
+                <Film className="w-4 h-4 text-[#041E42]" />
+                <span>Watch Reels &amp; Video Portfolio</span>
               </Link>
 
               <a
-                href="https://wa.me/919018636473?text=Hello%20Er.%20Naveed%20Malik,%20I%20am%20interested%20in%20a%20strategy%20consultation."
+                href="https://wa.me/919018636473?text=Hello%20Er.%20Naveed%20Malik,%20I%20would%20like%20to%20discuss%20a%20project%20for%20my%20business."
                 target="_blank"
                 rel="noopener noreferrer"
-                id="hero-whatsapp-btn"
                 onClick={playClick}
                 onMouseEnter={playHover}
                 className="btn-whatsapp text-sm"
               >
                 <MessageCircle className="w-4 h-4" />
-                <span>WhatsApp Counsel</span>
+                <span>WhatsApp Us</span>
               </a>
             </div>
 
             {/* Trust Badges Bar */}
-            <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-slate-800/80 w-full">
-              <div className="flex items-center gap-2 text-xs font-semibold text-slate-300">
-                <ShieldCheck className="w-4 h-4 text-[#14B8C4]" />
-                <span>100% Verified Outcomes</span>
+            <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-slate-200 w-full">
+              <div className="flex items-center gap-2 text-xs font-bold text-slate-700">
+                <TrendingUp className="w-4 h-4 text-[#0E8A94]" />
+                <span>Business Growth Advisory</span>
               </div>
-              <div className="flex items-center gap-2 text-xs font-semibold text-slate-300">
-                <Star className="w-4 h-4 text-[#F7931E] fill-[#F7931E]" />
-                <span>₹12Cr+ Revenue (50+ Brands)</span>
+              <div className="flex items-center gap-2 text-xs font-bold text-slate-700">
+                <Video className="w-4 h-4 text-[#F7931E]" />
+                <span>In-House Video Crew</span>
               </div>
-              <div className="flex items-center gap-2 text-xs font-semibold text-slate-300">
-                <Award className="w-4 h-4 text-[#14B8C4]" />
-                <span>Executive C-Suite Retainers</span>
+              <div className="flex items-center gap-2 text-xs font-bold text-slate-700">
+                <BarChart3 className="w-4 h-4 text-[#0E8A94]" />
+                <span>4.8× Avg. Ad ROAS</span>
               </div>
             </div>
 
           </div>
 
-          {/* Right Column: Hero Showcase Visual with Floating Stat Badges */}
+          {/* Right Column: Hero Visual Card */}
           <div className="lg:col-span-5 relative flex justify-center items-center">
             
-            {/* Center Hero Card Box */}
-            <div className="relative w-full aspect-[4/5] max-w-[400px] rounded-[32px] md:rounded-[40px] shadow-2xl overflow-hidden border border-slate-700/60 bg-[#031730] z-10 flex flex-col justify-between p-7">
-              <div className="space-y-4">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#14B8C4]/15 border border-[#14B8C4]/30 text-xs font-bold text-[#14B8C4]">
-                  <span>Er. Naveed Malik</span>
+            {/* Center Card */}
+            <div className="relative w-full max-w-[420px] rounded-[32px] shadow-2xl overflow-hidden border border-slate-200 bg-white p-7 z-10 flex flex-col justify-between">
+              
+              <div className="space-y-4 mb-6">
+                <div className="flex items-center justify-between">
+                  <span className="badge-teal text-[10px] py-1 px-3">
+                    Full-Service Media &amp; Growth Agency
+                  </span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping" />
                 </div>
-                <h3 className="font-display text-2xl font-bold text-white leading-snug">
-                  Engineering Systems for High-Growth Enterprises
+
+                <h3 className="font-display text-xl font-bold text-[#0F172A] leading-snug">
+                  Er. Naveed Malik &amp; Team
                 </h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  From Brand Identity architecture to high-intent Meta ad funnels and sub-1s web platforms.
+                <p className="text-xs text-slate-500 leading-relaxed">
+                  Combining business acumen, quantitative ad execution, graphic branding, and in-house film production.
                 </p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#041E42] border border-[#14B8C4]/20 space-y-2">
-                <div className="flex items-center justify-between text-xs font-bold">
-                  <span className="text-[#14B8C4]">Average ROAS Lift</span>
-                  <span className="text-white font-extrabold">4.8×</span>
-                </div>
-                <div className="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
-                  <div className="bg-gradient-to-r from-[#14B8C4] to-[#00D4E0] h-2 rounded-full w-[88%]" />
-                </div>
+              {/* Service Matrix Highlights */}
+              <div className="space-y-2.5">
+                {[
+                  { title: "Meta & Google Ads", stat: "4.8× ROAS", color: "text-[#F7931E] bg-[#F7931E]/10" },
+                  { title: "In-House 4K Video Shoots & Reels", stat: "Cinema Gear", color: "text-[#0E8A94] bg-[#14B8C4]/10" },
+                  { title: "Data Analytics & Funnels", stat: "+54% Lift", color: "text-emerald-700 bg-emerald-50" },
+                  { title: "Wedding & Event Production", stat: "In-House Team", color: "text-purple-700 bg-purple-50" },
+                ].map((item) => (
+                  <div key={item.title} className="p-3 rounded-xl bg-[#F8FAFC] border border-slate-200 flex items-center justify-between">
+                    <span className="text-xs font-bold text-[#0F172A]">{item.title}</span>
+                    <span className={`text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md ${item.color}`}>
+                      {item.stat}
+                    </span>
+                  </div>
+                ))}
               </div>
-            </div>
 
-            {/* Floating Badge 1 (Top Left) */}
-            <div className="absolute md:-left-8 left-0 top-8 bg-[#041E42]/95 backdrop-blur-md rounded-2xl p-4 shadow-2xl border border-slate-700/60 flex items-center gap-3.5 z-20">
-              <div className="w-10 h-10 rounded-xl bg-blue-950 flex items-center justify-center text-[#14B8C4] border border-[#14B8C4]/30">
-                <Star className="w-5 h-5 fill-[#14B8C4]" />
+              {/* Guarantee Footer */}
+              <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                <span className="flex items-center gap-1.5 font-semibold text-emerald-700">
+                  <ShieldCheck className="w-4 h-4 text-emerald-600" /> 100% In-House Execution
+                </span>
+                <span className="text-[10px] font-bold uppercase text-slate-400">Direct Retainers</span>
               </div>
-              <div>
-                <div className="text-lg font-bold text-white font-display">10+</div>
-                <div className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Years Excellence</div>
-              </div>
-            </div>
 
-            {/* Floating Badge 2 (Bottom Right) */}
-            <div className="absolute md:-right-6 right-0 bottom-20 bg-[#041E42]/95 backdrop-blur-md rounded-2xl p-4 shadow-2xl border border-slate-700/60 flex items-center gap-3.5 z-20">
-              <div className="w-10 h-10 rounded-xl bg-blue-950 flex items-center justify-center text-[#14B8C4] border border-[#14B8C4]/30 animate-pulse-ring">
-                <Users className="w-5 h-5 text-[#14B8C4]" />
-              </div>
-              <div>
-                <div className="text-lg font-bold text-white font-display">50+</div>
-                <div className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Brands Scaled</div>
-              </div>
-            </div>
-
-            {/* Floating Badge 3 (Bottom Left) */}
-            <div className="absolute md:-bottom-6 -bottom-2 md:left-6 left-2 bg-[#041E42]/95 backdrop-blur-md rounded-2xl p-4 shadow-2xl border border-slate-700/60 flex items-center gap-3.5 z-20">
-              <div className="w-10 h-10 rounded-xl bg-blue-950 flex items-center justify-center text-[#F7931E] border border-[#F7931E]/30">
-                <TrendingUp className="w-5 h-5 text-[#F7931E]" />
-              </div>
-              <div>
-                <div className="text-lg font-bold text-white font-display">₹12Cr+</div>
-                <div className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Client Revenue</div>
-              </div>
             </div>
 
           </div>

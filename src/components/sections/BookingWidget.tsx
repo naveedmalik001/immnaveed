@@ -2,13 +2,24 @@
 
 import React, { useState } from "react";
 import { useSound } from "@/hooks/useSound";
-import { CheckCircle2, Mail, Phone, ArrowRight, MessageSquare, ShieldCheck, Lock } from "lucide-react";
+import { CheckCircle2, Mail, Phone, ArrowRight, MessageSquare, Lock } from "lucide-react";
+
+const serviceOptions = [
+  "Business Growth & Strategy Consultation",
+  "Social Media Marketing (Meta & Google Ads)",
+  "Graphic Designing & Content Creation",
+  "Video Shoots & Reel Production",
+  "Video Editing & Post-Production",
+  "Data Analysis & Business Intelligence",
+  "Wedding Shoots & In-House Event Production",
+  "Complete Agency Retainer",
+];
 
 export default function BookingWidget() {
   const [form, setForm] = useState({
     name:    "",
     contact: "",
-    service: "Brand Strategy & Positioning",
+    service: "Business Growth & Strategy Consultation",
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
@@ -20,7 +31,7 @@ export default function BookingWidget() {
     setSubmitted(true);
 
     const waText = encodeURIComponent(
-      `Hello Er. Naveed Malik,\n\nI would like to schedule a strategy consultation.\n\n*Name:* ${form.name}\n*Contact (Email/Phone):* ${form.contact}\n*Service:* ${form.service}\n*Brief Notes:* ${form.message}`
+      `Hello Er. Naveed Malik,\n\nI would like to schedule a consultation / project discussion.\n\n*Name:* ${form.name}\n*Contact (Email/Phone):* ${form.contact}\n*Service:* ${form.service}\n*Project Brief:* ${form.message}`
     );
     setTimeout(() => {
       window.open(`https://wa.me/919018636473?text=${waText}`, "_blank");
@@ -28,7 +39,7 @@ export default function BookingWidget() {
   };
 
   return (
-    <section id="contact" className="section-pad bg-gradient-to-br from-[#041E42] via-[#05244C] to-[#031730] bg-grid-blueprint border-b border-slate-800 relative overflow-hidden">
+    <section id="contact" className="section-pad bg-gradient-to-br from-[#041E42] via-[#05244C] to-[#031730] bg-grid-blueprint border-b border-slate-800 relative overflow-hidden font-sans">
       
       {/* Ambient background blur */}
       <div className="absolute w-[500px] h-[500px] -top-20 -right-20 bg-[#14B8C4]/15 rounded-full blur-3xl pointer-events-none" />
@@ -43,28 +54,28 @@ export default function BookingWidget() {
             <div className="mb-3.5">
               <span className="badge-teal">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#14B8C4] animate-pulse" />
-                Direct Strategy Advisory
+                Direct Client Consultation
               </span>
             </div>
 
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.1] mb-4">
-              Schedule Your 1-on-1<br />
-              <span className="text-gradient-teal">Strategy Session.</span>
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.08] mb-4">
+              Schedule Your Project &amp;<br />
+              <span className="text-gradient-teal">Growth Strategy Session.</span>
             </h2>
 
             <div className="teal-divider-line" />
 
             <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-8 max-w-sm font-normal">
-              Speak directly with Er. Naveed Malik to audit your current business bottlenecks and formulate a bespoke growth roadmap.
+              Speak directly with Er. Naveed Malik and our production leads to discuss your marketing campaigns, video shoot requirements, or business growth goals.
             </p>
 
             {/* Trust Signals */}
             <div className="space-y-3 border-t border-slate-700/60 pt-6 mb-8">
               {[
                 "100% Confidential — NDA signed on request",
-                "Reply guaranteed within 24 business hours",
-                "No obligation — initial feasibility review",
-                "Direct access to principal growth strategist",
+                "Guaranteed reply within 24 business hours",
+                "Direct in-house team — zero third-party markups",
+                "Bespoke strategy tailored to your exact budget",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-[#14B8C4] flex-shrink-0 mt-0.5" />
@@ -95,8 +106,8 @@ export default function BookingWidget() {
 
           </div>
 
-          {/* Right Column: High-Converting Form Card */}
-          <div className="lg:col-span-7 bg-[#05244C]/95 backdrop-blur-md border border-slate-700/60 p-7 sm:p-10 rounded-3xl shadow-2xl">
+          {/* Right Column: Form Card */}
+          <div className="lg:col-span-7 bg-[#05244C]/95 backdrop-blur-md border border-slate-700/80 p-7 sm:p-10 rounded-3xl shadow-2xl">
             {submitted ? (
               <div className="py-10 text-center animate-fadeIn">
                 <div className="w-16 h-16 bg-emerald-500/20 border border-emerald-500/40 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -151,7 +162,7 @@ export default function BookingWidget() {
 
                 <div>
                   <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-300 mb-2">
-                    Primary Capability Needed
+                    Primary Service Needed
                   </label>
                   <select
                     value={form.service}
@@ -159,13 +170,7 @@ export default function BookingWidget() {
                     onFocus={playHover}
                     className="input-cambridge cursor-pointer"
                   >
-                    {[
-                      "Brand Strategy & Positioning",
-                      "Meta & Google Performance Ads",
-                      "Next.js 15 Web Engineering",
-                      "Executive Growth Consulting",
-                      "Complete Agency Retainer",
-                    ].map((s) => (
+                    {serviceOptions.map((s) => (
                       <option key={s} value={s} className="bg-[#031730] text-white">{s}</option>
                     ))}
                   </select>
@@ -173,14 +178,14 @@ export default function BookingWidget() {
 
                 <div>
                   <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-300 mb-2">
-                    Project Brief &amp; Current Bottlenecks *
+                    Project Brief &amp; Requirements *
                   </label>
                   <textarea
                     required
                     rows={4}
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    placeholder="Tell us about your brand goals, target timeline, or current acquisition challenges..."
+                    placeholder="Tell us about your business goals, target shoot dates, or current marketing challenges..."
                     className="input-cambridge resize-none"
                   />
                 </div>
@@ -194,7 +199,7 @@ export default function BookingWidget() {
                   <button
                     type="submit"
                     onMouseEnter={playHover}
-                    className="btn-orange text-sm font-semibold"
+                    className="btn-orange text-sm font-semibold cursor-pointer"
                   >
                     <span>Request Strategy Session</span>
                     <ArrowRight className="w-4 h-4" />
