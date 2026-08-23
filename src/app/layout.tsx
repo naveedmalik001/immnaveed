@@ -19,6 +19,7 @@ const inter = Inter({
 
 export const viewport: Viewport = {
   themeColor: "#041E42",
+  colorScheme: "dark light",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -52,6 +53,19 @@ export const metadata: Metadata = {
   authors: [{ name: "Er. Naveed Malik", url: "https://www.immnaveed.in" }],
   creator: "Er. Naveed Malik",
   publisher: "IMMNAVEED",
+  manifest: "/manifest.json",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "IMMNAVEED",
+  },
   alternates: {
     canonical: "https://www.immnaveed.in",
   },
@@ -98,7 +112,7 @@ const jsonLd = {
       "@id": "https://www.immnaveed.in/#organization",
       "name": "IMMNAVEED",
       "url": "https://www.immnaveed.in",
-      "logo": "https://www.immnaveed.in/favicon.ico",
+      "logo": "https://www.immnaveed.in/icon.svg",
       "sameAs": [
         "https://www.instagram.com/immnaveed",
         "https://www.linkedin.com/in/naveedshowkatmalik"
@@ -152,6 +166,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={`${inter.variable} ${plusJakarta.variable}`}>
       <head>
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/icon.svg" />
+        <meta name="theme-color" content="#041E42" />
+        <meta name="msapplication-navbutton-color" content="#041E42" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -23,6 +23,7 @@ import {
   Eye,
   ShieldCheck,
   TrendingUp,
+  Plus,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -78,12 +79,69 @@ export default function AdminLeadsPage() {
   const fetchLeads = async () => {
     setLoading(true);
     try {
+      // 1. Fetch server-side leads
       const res = await fetch(`/api/leads?status=${selectedStatus}&search=${encodeURIComponent(searchTerm)}`);
       const data = await res.json();
-      if (data.success) {
-        setLeads(data.leads);
-        setStats(data.stats);
+      let serverLeads: LeadItem[] = data.success && Array.isArray(data.leads) ? data.leads : [];
+
+      // 2. Fetch locally stored leads (fallback for Vercel lambda warm resets)
+      let localLeads: LeadItem[] = [];
+      try {
+        const localRaw = localStorage.getItem("immnaveed_lead_vault");
+        if (localRaw) {
+          localLeads = JSON.parse(localRaw);
+        }
+      } catch (e) {
+        console.warn("Local storage parse note:", e);
       }
+
+      // 3. Merge unique leads by ID & phone/email
+      const leadMap = new Map<string, LeadItem>();
+      localLeads.forEach((l) => leadMap.set(l.id, l));
+      serverLeads.forEach((l) => leadMap.set(l.id, l));
+
+      const mergedLeads = Array.from(leadMap.values()).sort(
+        (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      );
+
+      // Filter by search / status
+      let filtered = mergedLeads;
+      if (selectedStatus !== "All") {
+        filtered = filtered.filter((l) => l.status === selectedStatus);
+      }
+      if (searchTerm) {
+        const q = searchTerm.toLowerCase();
+        filtered = filtered.filter(
+          (l) =>
+            l.name.toLowerCase().includes(q) ||
+            (l.firmName && l.firmName.toLowerCase().includes(q)) ||
+            l.email.toLowerCase().includes(q) ||
+            l.phone.includes(q) ||
+            l.service.toLowerCase().includes(q) ||
+            l.message.toLowerCase().includes(q)
+        );
+      }
+
+      setLeads(filtered);
+
+      // Calculate stats
+      const total = mergedLeads.length;
+      const newCount = mergedLeads.filter((l) => l.status === "New").length;
+      const inDisc = mergedLeads.filter((l) => l.status === "In Discussion" || l.status === "Contacted").length;
+      const conv = mergedLeads.filter((l) => l.status === "Converted").length;
+
+      setStats({
+        totalLeads: total,
+        newLeads: newCount,
+        inDiscussion: inDisc,
+        converted: conv,
+        conversionRate: total > 0 ? `${((conv / total) * 100).toFixed(1)}%` : "0%",
+        topService: data.stats?.topService || "Website Design & Next.js",
+      });
+
+      // Update local storage backup
+      localStorage.setItem("immnaveed_lead_vault", JSON.stringify(mergedLeads));
+
     } catch (err) {
       console.error("Error fetching leads:", err);
     } finally {
@@ -99,16 +157,29 @@ export default function AdminLeadsPage() {
 
   const handleStatusChange = async (id: string, newStatus: LeadStatus) => {
     try {
-      const res = await fetch(`/api/leads/${id}`, {
+      // Update local state first
+      setLeads((prev) => prev.map((l) => (l.id === id ? { ...l, status: newStatus } : l)));
+      if (selectedLead?.id === id) {
+        setSelectedLead({ ...selectedLead, status: newStatus });
+      }
+
+      // Update local storage
+      try {
+        const localRaw = localStorage.getItem("immnaveed_lead_vault");
+        if (localRaw) {
+          const list: LeadItem[] = JSON.parse(localRaw);
+          const updated = list.map((l) => (l.id === id ? { ...l, status: newStatus } : l));
+          localStorage.setItem("immnaveed_lead_vault", JSON.stringify(updated));
+        }
+      } catch (e) {}
+
+      // Update server API
+      await fetch(`/api/leads/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus }),
       });
-      const data = await res.json();
-      if (data.success) {
-        setLeads((prev) => prev.map((l) => (l.id === id ? { ...l, status: newStatus } : l)));
-        fetchLeads();
-      }
+      fetchLeads();
     } catch (err) {
       console.error("Error updating status:", err);
     }
@@ -117,13 +188,21 @@ export default function AdminLeadsPage() {
   const handleDeleteLead = async (id: string) => {
     if (!confirm("Are you sure you want to delete this lead?")) return;
     try {
-      const res = await fetch(`/api/leads/${id}`, { method: "DELETE" });
-      const data = await res.json();
-      if (data.success) {
-        setLeads((prev) => prev.filter((l) => l.id !== id));
-        if (selectedLead?.id === id) setSelectedLead(null);
-        fetchLeads();
-      }
+      setLeads((prev) => prev.filter((l) => l.id !== id));
+      if (selectedLead?.id === id) setSelectedLead(null);
+
+      // Remove from local storage
+      try {
+        const localRaw = localStorage.getItem("immnaveed_lead_vault");
+        if (localRaw) {
+          const list: LeadItem[] = JSON.parse(localRaw);
+          localStorage.setItem("immnaveed_lead_vault", JSON.stringify(list.filter((l) => l.id !== id)));
+        }
+      } catch (e) {}
+
+      // Delete on server
+      await fetch(`/api/leads/${id}`, { method: "DELETE" });
+      fetchLeads();
     } catch (err) {
       console.error("Error deleting lead:", err);
     }
@@ -327,7 +406,7 @@ export default function AdminLeadsPage() {
             
             <div className="p-4 border-b border-slate-700/80 flex items-center justify-between text-xs font-bold text-slate-300">
               <span>Inquiries ({leads.length})</span>
-              <span className="text-[11px] text-slate-400">Sorted by newest</span>
+              <span className="text-[11px] text-slate-400">Synced across Local Vault &amp; Server DB</span>
             </div>
 
             {leads.length === 0 ? (
