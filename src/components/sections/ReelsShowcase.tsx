@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Play, ExternalLink, X, Film, Sparkles, Eye, Camera, ArrowUpRight } from "lucide-react";
+import { Play, ExternalLink, X, Film, Eye, Camera, ArrowUpRight } from "lucide-react";
 import { reelsData, ReelItem } from "@/data/reels-data";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { useSound } from "@/hooks/useSound";
@@ -17,7 +17,7 @@ function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
   );
 }
 
-const categories = ["All", "Reels", "Corporate Video", "Wedding & Events", "Social Media Ad"];
+const categories = ["All", "Reels", "Corporate Video", "Brand Commercial", "Talking Head"];
 
 export default function ReelsShowcase() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -34,11 +34,11 @@ export default function ReelsShowcase() {
 
         {/* Section Header */}
         <SectionHeader
-          badgeText="In-House Media Production & Editing"
-          title="Viral Reels, Corporate Shoots &"
+          badgeText="In-House Media Production & Video Editing"
+          title="Viral Reels, Brand Shoots &"
           gradientTitle="Cinematic Video Portfolio."
-          subtitle="Explore our in-house video production work: high-retention Instagram reels, corporate brand films, performance ad creatives, and luxury wedding cinematography."
-          actionLink={{ label: "Book a Shoot / Edit Project", href: "/contact" }}
+          subtitle="Watch our real video work: viral Instagram reels, corporate promo shoots, talking head founder series, and commercial brand productions."
+          actionLink={{ label: "Book a Shoot / Video Project", href: "/contact" }}
           theme="light"
         />
 
@@ -64,7 +64,7 @@ export default function ReelsShowcase() {
         </div>
 
         {/* Reels Video Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {filteredReels.map((reel) => (
             <div
               key={reel.id}
@@ -73,10 +73,10 @@ export default function ReelsShowcase() {
                 setSelectedReel(reel);
               }}
               onMouseEnter={playHover}
-              className="card-white overflow-hidden group cursor-pointer flex flex-col justify-between border border-slate-200 hover:border-[#14B8C4] shadow-sm hover:shadow-xl transition-all duration-300"
+              className="card-white overflow-hidden group cursor-pointer flex flex-col justify-between border border-slate-200 hover:border-[#14B8C4] shadow-xs hover:shadow-xl transition-all duration-300 rounded-2xl"
             >
               {/* Thumbnail Container */}
-              <div className="relative aspect-[16/10] sm:aspect-[4/3] bg-slate-900 overflow-hidden">
+              <div className="relative aspect-[9/14] sm:aspect-[9/13] bg-slate-900 overflow-hidden">
                 <img
                   src={reel.thumbnail}
                   alt={reel.title}
@@ -84,16 +84,16 @@ export default function ReelsShowcase() {
                 />
                 
                 {/* Dark Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#031730]/90 via-[#031730]/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#031730]/95 via-[#031730]/30 to-transparent" />
 
                 {/* Top Badge Row */}
                 <div className="absolute top-3 inset-x-3 flex items-center justify-between z-10">
-                  <span className="badge-teal text-[10px] py-1 px-3 bg-[#031730]/80 backdrop-blur-md">
+                  <span className="badge-teal text-[9px] py-0.5 px-2 bg-[#031730]/85 backdrop-blur-md">
                     {reel.category}
                   </span>
                   {reel.views && (
-                    <span className="inline-flex items-center gap-1 text-[10px] font-bold text-white bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/15">
-                      <Eye className="w-3 h-3 text-[#14B8C4]" />
+                    <span className="inline-flex items-center gap-1 text-[9px] font-bold text-white bg-black/70 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/15">
+                      <InstagramIcon className="w-3 h-3 text-[#14B8C4]" />
                       {reel.views}
                     </span>
                   )}
@@ -107,9 +107,9 @@ export default function ReelsShowcase() {
                 </div>
 
                 {/* Bottom Tags */}
-                <div className="absolute bottom-3 left-3 right-3 flex flex-wrap gap-1.5 z-10">
+                <div className="absolute bottom-3 left-3 right-3 flex flex-wrap gap-1 z-10">
                   {reel.tags.map((tag) => (
-                    <span key={tag} className="text-[9px] font-bold uppercase tracking-wider text-slate-200 bg-black/50 backdrop-blur-xs px-2 py-0.5 rounded-md">
+                    <span key={tag} className="text-[8px] font-bold uppercase tracking-wider text-slate-200 bg-black/60 backdrop-blur-xs px-1.5 py-0.5 rounded">
                       {tag}
                     </span>
                   ))}
@@ -117,23 +117,23 @@ export default function ReelsShowcase() {
               </div>
 
               {/* Card Meta Content */}
-              <div className="p-5 flex flex-col justify-between flex-1 bg-white">
+              <div className="p-4 flex flex-col justify-between flex-1 bg-white">
                 <div>
-                  <h3 className="font-display text-base sm:text-lg font-bold text-[#0F172A] group-hover:text-[#0E8A94] transition-colors leading-snug mb-2">
+                  <h3 className="font-display text-sm sm:text-base font-bold text-[#0F172A] group-hover:text-[#0E8A94] transition-colors leading-snug mb-1.5 line-clamp-2">
                     {reel.title}
                   </h3>
-                  <p className="text-xs text-slate-500 leading-relaxed line-clamp-2 mb-4 font-normal">
+                  <p className="text-[11px] text-slate-500 leading-relaxed line-clamp-2 mb-3 font-normal">
                     {reel.description}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
-                  <span className="text-slate-400 flex items-center gap-1 text-[11px]">
-                    <InstagramIcon className="w-3.5 h-3.5 text-rose-500" /> Instagram Ready
+                <div className="pt-2.5 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+                  <span className="text-slate-400 flex items-center gap-1 text-[10px]">
+                    <InstagramIcon className="w-3 h-3 text-rose-500" /> Watch Reel
                   </span>
-                  <span className="text-[#0E8A94] group-hover:text-[#041E42] flex items-center gap-1 uppercase tracking-wider text-[11px] transition-colors">
-                    <span>Preview &amp; Play</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <span className="text-[#0E8A94] group-hover:text-[#041E42] flex items-center gap-1 uppercase tracking-wider text-[10px] transition-colors">
+                    <span>Play</span>
+                    <ArrowUpRight className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </span>
                 </div>
               </div>
@@ -147,26 +147,26 @@ export default function ReelsShowcase() {
       {selectedReel && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div
-            className="absolute inset-0 bg-[#031730]/85 backdrop-blur-md transition-opacity"
+            className="absolute inset-0 bg-[#031730]/90 backdrop-blur-md transition-opacity"
             onClick={() => {
               playClick();
               setSelectedReel(null);
             }}
           />
 
-          <div className="relative z-10 bg-[#041E42] text-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden border border-slate-700/80 animate-fadeIn">
+          <div className="relative z-10 bg-[#041E42] text-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden border border-slate-700/80 animate-fadeIn">
             {/* Top Teal Strip */}
             <div className="h-1.5 bg-gradient-to-r from-[#14B8C4] to-[#00D4E0]" />
 
-            <div className="p-6 sm:p-8 max-h-[85vh] overflow-y-auto space-y-6">
+            <div className="p-5 sm:p-7 max-h-[90vh] overflow-y-auto space-y-5">
               
               {/* Header Row */}
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <span className="text-[10px] font-bold text-[#14B8C4] uppercase tracking-widest block mb-1">
-                    {selectedReel.category} · Media Portfolio
+                    {selectedReel.category} · Real Reel Work
                   </span>
-                  <h3 className="font-display text-xl sm:text-2xl font-extrabold text-white leading-tight">
+                  <h3 className="font-display text-lg sm:text-xl font-extrabold text-white leading-tight">
                     {selectedReel.title}
                   </h3>
                 </div>
@@ -181,44 +181,24 @@ export default function ReelsShowcase() {
                 </button>
               </div>
 
-              {/* Video Player / Instagram Embed Placeholder Container */}
-              <div className="relative aspect-[16/9] bg-black rounded-2xl overflow-hidden border border-slate-700 flex items-center justify-center shadow-inner">
-                <img
-                  src={selectedReel.thumbnail}
-                  alt={selectedReel.title}
-                  className="w-full h-full object-cover opacity-60"
+              {/* Instagram Embed / Player Container */}
+              <div className="relative w-full rounded-2xl overflow-hidden border border-slate-700 bg-black flex flex-col items-center justify-center min-h-[380px]">
+                <iframe
+                  src={selectedReel.embedUrl}
+                  className="w-full min-h-[440px] border-0 rounded-2xl"
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                  allowFullScreen
                 />
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-black/40">
-                  <div className="w-16 h-16 rounded-full bg-[#14B8C4] text-[#031730] flex items-center justify-center mb-3 shadow-xl">
-                    <Film className="w-8 h-8" />
-                  </div>
-                  <p className="font-display text-base font-bold text-white mb-1">
-                    In-House 4K Production &amp; Color Graded Edit
-                  </p>
-                  <p className="text-xs text-slate-300 max-w-sm mb-4">
-                    Captured on cinema gear &amp; edited with custom sound design.
-                  </p>
-                  <a
-                    href={selectedReel.instagramUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-orange text-xs py-2.5 px-5 rounded-xl inline-flex items-center gap-2"
-                  >
-                    <InstagramIcon className="w-4 h-4" />
-                    <span>Watch Reel on Instagram</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
-                </div>
               </div>
 
               {/* Description & Tags */}
-              <div className="p-4 rounded-2xl bg-[#031730] border border-slate-700/80 space-y-3">
-                <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-normal">
+              <div className="p-4 rounded-2xl bg-[#031730] border border-slate-700/80 space-y-2.5">
+                <p className="text-xs text-slate-200 leading-relaxed font-normal">
                   {selectedReel.description}
                 </p>
-                <div className="flex flex-wrap gap-2 pt-2 border-t border-slate-800">
+                <div className="flex flex-wrap gap-1.5 pt-2 border-t border-slate-800">
                   {selectedReel.tags.map((t) => (
-                    <span key={t} className="badge-teal text-[9px] py-0.5 px-2.5">
+                    <span key={t} className="badge-teal text-[9px] py-0.5 px-2">
                       {t}
                     </span>
                   ))}
@@ -226,7 +206,7 @@ export default function ReelsShowcase() {
               </div>
 
               {/* Actions */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                 <a
                   href={selectedReel.instagramUrl}
                   target="_blank"
@@ -234,7 +214,7 @@ export default function ReelsShowcase() {
                   className="btn-white text-center text-xs font-bold cursor-pointer"
                 >
                   <InstagramIcon className="w-4 h-4 text-[#041E42] inline-block mr-1.5" />
-                  <span>Open in Instagram App</span>
+                  <span>Open on Instagram</span>
                 </a>
 
                 <Link
@@ -246,7 +226,7 @@ export default function ReelsShowcase() {
                   className="btn-orange text-center text-xs font-bold"
                 >
                   <Camera className="w-4 h-4" />
-                  <span>Book Shoot / Video Project</span>
+                  <span>Book Shoot / Edit</span>
                 </Link>
               </div>
 
