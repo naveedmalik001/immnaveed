@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { useSound } from "@/hooks/useSound";
-import { ArrowRight, Film, MessageCircle, ShieldCheck, Star, Award, TrendingUp, Users, Video, BarChart3 } from "lucide-react";
+import { ArrowRight, Film, MessageCircle, ShieldCheck, Code2, Server, TrendingUp, BarChart3, Video, Palette } from "lucide-react";
 
 export default function Hero() {
   const { playClick, playHover } = useSound();
@@ -28,19 +28,19 @@ export default function Hero() {
             {/* Eyebrow Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#14B8C4]/12 border border-[#14B8C4]/25 text-[#0E8A94] text-xs font-bold uppercase tracking-wider mb-6 shadow-xs">
               <span className="w-2 h-2 rounded-full bg-[#14B8C4] animate-pulse" />
-              <span>Growth Consulting · Media Production · Performance Marketing</span>
+              <span>Next.js Web &amp; ERP Engineering · Media Production · Growth Marketing</span>
             </div>
 
             {/* Main Headline */}
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0F172A] leading-[1.08] tracking-tight mb-6">
-              Transforming Businesses with <br />
+              Web &amp; ERP Engineering, <br />
               <span className="text-gradient-teal">Growth Strategy, Paid Ads</span><br />
               &amp; In-House Video Production.
             </h1>
 
             {/* Subtitle */}
             <p className="text-base sm:text-lg leading-relaxed text-slate-600 mb-8 max-w-xl font-normal">
-              We help businesses scale with executive business consultation, high-ROAS Meta &amp; Google ad campaigns, custom graphic design, in-house 4K video shoots/reels, data analytics, and cinematic wedding production.
+              We engineer sub-1s Next.js websites, custom ERPs for schools &amp; hospitals, high-ROAS Meta &amp; Google ad campaigns, graphic design, and in-house 4K corporate &amp; wedding video shoots.
             </p>
 
             {/* 3 Action Buttons */}
@@ -66,7 +66,7 @@ export default function Hero() {
               </Link>
 
               <a
-                href="https://wa.me/919018636473?text=Hello%20Er.%20Naveed%20Malik,%20I%20would%20like%20to%20discuss%20a%20project%20for%20my%20business."
+                href="https://wa.me/919018636473?text=Hello%20Er.%20Naveed%20Malik,%20I%20would%20like%20to%20discuss%20a%20website%20or%20marketing%20project."
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={playClick}
@@ -81,16 +81,16 @@ export default function Hero() {
             {/* Trust Badges Bar */}
             <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-slate-200 w-full">
               <div className="flex items-center gap-2 text-xs font-bold text-slate-700">
-                <TrendingUp className="w-4 h-4 text-[#0E8A94]" />
-                <span>Business Growth Advisory</span>
+                <Code2 className="w-4 h-4 text-[#0E8A94]" />
+                <span>Sub-1s Next.js Apps</span>
               </div>
               <div className="flex items-center gap-2 text-xs font-bold text-slate-700">
-                <Video className="w-4 h-4 text-[#F7931E]" />
-                <span>In-House Video Crew</span>
+                <Server className="w-4 h-4 text-[#F7931E]" />
+                <span>Custom School/Hospital ERPs</span>
               </div>
               <div className="flex items-center gap-2 text-xs font-bold text-slate-700">
-                <BarChart3 className="w-4 h-4 text-[#0E8A94]" />
-                <span>4.8× Avg. Ad ROAS</span>
+                <Video className="w-4 h-4 text-[#0E8A94]" />
+                <span>In-House Cinema Crew</span>
               </div>
             </div>
 
@@ -105,7 +105,7 @@ export default function Hero() {
               <div className="space-y-4 mb-6">
                 <div className="flex items-center justify-between">
                   <span className="badge-teal text-[10px] py-1 px-3">
-                    Full-Service Media &amp; Growth Agency
+                    Full-Spectrum Software &amp; Media
                   </span>
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping" />
                 </div>
@@ -114,17 +114,17 @@ export default function Hero() {
                   Er. Naveed Malik &amp; Team
                 </h3>
                 <p className="text-xs text-slate-500 leading-relaxed">
-                  Combining business acumen, quantitative ad execution, graphic branding, and in-house film production.
+                  Combining software architecture, tailored ERP systems, quantitative ad execution, and in-house film production.
                 </p>
               </div>
 
               {/* Service Matrix Highlights */}
               <div className="space-y-2.5">
                 {[
-                  { title: "Meta & Google Ads", stat: "4.8× ROAS", color: "text-[#F7931E] bg-[#F7931E]/10" },
-                  { title: "In-House 4K Video Shoots & Reels", stat: "Cinema Gear", color: "text-[#0E8A94] bg-[#14B8C4]/10" },
-                  { title: "Data Analytics & Funnels", stat: "+54% Lift", color: "text-emerald-700 bg-emerald-50" },
-                  { title: "Wedding & Event Production", stat: "In-House Team", color: "text-purple-700 bg-purple-50" },
+                  { title: "Next.js Web & UI/UX Design", stat: "Sub-1s Speeds", color: "text-[#0E8A94] bg-[#14B8C4]/10" },
+                  { title: "Custom ERPs (Schools/Clinics)", stat: "Tailored Dashboards", color: "text-blue-700 bg-blue-50" },
+                  { title: "Meta & Google Ad Scaling", stat: "4.8× ROAS", color: "text-[#F7931E] bg-[#F7931E]/10" },
+                  { title: "In-House 4K Shoots & Reels", stat: "Cinema Gear", color: "text-purple-700 bg-purple-50" },
                 ].map((item) => (
                   <div key={item.title} className="p-3 rounded-xl bg-[#F8FAFC] border border-slate-200 flex items-center justify-between">
                     <span className="text-xs font-bold text-[#0F172A]">{item.title}</span>
@@ -138,7 +138,7 @@ export default function Hero() {
               {/* Guarantee Footer */}
               <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
                 <span className="flex items-center gap-1.5 font-semibold text-emerald-700">
-                  <ShieldCheck className="w-4 h-4 text-emerald-600" /> 100% In-House Execution
+                  <ShieldCheck className="w-4 h-4 text-emerald-600" /> 100% In-House Engineering
                 </span>
                 <span className="text-[10px] font-bold uppercase text-slate-400">Direct Retainers</span>
               </div>

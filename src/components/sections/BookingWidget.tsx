@@ -5,6 +5,8 @@ import { useSound } from "@/hooks/useSound";
 import { CheckCircle2, Mail, Phone, ArrowRight, MessageSquare, Lock } from "lucide-react";
 
 const serviceOptions = [
+  "Website Design & Next.js Development (UI/UX)",
+  "Custom Software & ERP Development (Education/Hospitals/Business)",
   "Business Growth & Strategy Consultation",
   "Social Media Marketing (Meta & Google Ads)",
   "Graphic Designing & Content Creation",
@@ -19,7 +21,7 @@ export default function BookingWidget() {
   const [form, setForm] = useState({
     name:    "",
     contact: "",
-    service: "Business Growth & Strategy Consultation",
+    service: "Website Design & Next.js Development (UI/UX)",
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
@@ -59,14 +61,14 @@ export default function BookingWidget() {
             </div>
 
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.08] mb-4">
-              Schedule Your Project &amp;<br />
+              Schedule Your Web, Software &amp;<br />
               <span className="text-gradient-teal">Growth Strategy Session.</span>
             </h2>
 
             <div className="teal-divider-line" />
 
             <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-8 max-w-sm font-normal">
-              Speak directly with Er. Naveed Malik and our production leads to discuss your marketing campaigns, video shoot requirements, or business growth goals.
+              Speak directly with Er. Naveed Malik and our software &amp; production leads to discuss your Next.js website, custom ERP, marketing funnels, or video shoot.
             </p>
 
             {/* Trust Signals */}
@@ -74,8 +76,8 @@ export default function BookingWidget() {
               {[
                 "100% Confidential — NDA signed on request",
                 "Guaranteed reply within 24 business hours",
-                "Direct in-house team — zero third-party markups",
-                "Bespoke strategy tailored to your exact budget",
+                "Direct in-house engineers & creators — zero middlemen",
+                "Custom ERP demos for schools, clinics & businesses",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-[#14B8C4] flex-shrink-0 mt-0.5" />
@@ -185,7 +187,7 @@ export default function BookingWidget() {
                     rows={4}
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    placeholder="Tell us about your business goals, target shoot dates, or current marketing challenges..."
+                    placeholder="Tell us about your website vision, ERP/software requirements, marketing goals, or shoot dates..."
                     className="input-cambridge resize-none"
                   />
                 </div>

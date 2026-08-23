@@ -1,4 +1,6 @@
 import {
+  Code2,
+  Server,
   TrendingUp,
   Target,
   Palette,
@@ -27,6 +29,58 @@ export type ServiceDetails = {
 export const servicesData: ServiceDetails[] = [
   {
     id: "s1",
+    title: "Website Design & Next.js Development (UI/UX)",
+    slug: "website-design-development",
+    category: "Web Engineering",
+    seoTitle: "Website Design & Next.js Web Development Agency | IMMNAVEED",
+    seoDescription: "High-speed Next.js 15 web development, modern UI/UX design, and mobile-optimized digital storefronts with sub-1s load times.",
+    shortDescription: "Bespoke UI/UX design and sub-1s Next.js web applications engineered to convert visitors into customers.",
+    content: "We engineer zero-compromise digital storefronts and corporate websites. Utilizing Next.js 15, modern UI/UX design systems in Figma, and Tailwind CSS, we build lightning-fast web applications that load in under 1 second, rank supreme on search engines, and maximize conversion rates.",
+    features: [
+      "Modern UI/UX Design & Interactive Prototypes",
+      "Next.js 15 App Router & React Engineering",
+      "Sub-1s Page Load Speeds & 95+ Lighthouse Score",
+      "Mobile-First Responsive Layouts & Animations",
+      "SEO Structured Schema & Conversion Architecture"
+    ],
+    benefits: [
+      "Sub-second load times that drastically boost conversions",
+      "World-class, modern aesthetic that builds immediate trust",
+      "Top-tier search engine visibility and structured schema",
+      "Scalable modern codebase with zero legacy bloat"
+    ],
+    icon: Code2,
+    color: "text-[#0E8A94] bg-[#14B8C4]/15",
+    heroImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    id: "s2",
+    title: "Custom Software & ERP Development",
+    slug: "custom-software-erp-development",
+    category: "Software & ERP",
+    seoTitle: "Custom ERP & Software Development for Education, Hospitals & Businesses",
+    seoDescription: "Custom software and ERP systems engineered for educational institutions, clinics, hospitals, real estate, and enterprise operations.",
+    shortDescription: "Tailored enterprise ERPs, school/college portals, hospital management systems, and operational dashboards.",
+    content: "Off-the-shelf software rarely fits specialized organizational workflows. We build tailored ERP systems, student management portals for education institutes, patient & appointment software for clinics and hospitals, billing engines, and real-time operational dashboards for all business sectors.",
+    features: [
+      "Education ERPs (Student Admission, Fee, Attendance)",
+      "Hospital & Clinic Systems (EMR, Appointments, Billing)",
+      "Custom Business ERPs & Operational Dashboards",
+      "Role-Based Access Controls & Data Encryption",
+      "Third-Party API & Payment Gateway Integrations"
+    ],
+    benefits: [
+      "Automate manual administrative workflows by 80%",
+      "Eliminate spreadsheet errors with unified central databases",
+      "Real-time visibility into revenue, operations, and records",
+      "Dedicated long-term maintenance and custom feature scaling"
+    ],
+    icon: Server,
+    color: "text-blue-600 bg-blue-100",
+    heroImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    id: "s3",
     title: "Business Growth & Strategy Consultation",
     slug: "business-growth-consulting",
     category: "Consultation",
@@ -52,7 +106,7 @@ export const servicesData: ServiceDetails[] = [
     heroImage: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80"
   },
   {
-    id: "s2",
+    id: "s4",
     title: "Social Media Marketing (Meta & Google Ads)",
     slug: "social-media-marketing",
     category: "Paid Advertising",
@@ -78,7 +132,7 @@ export const servicesData: ServiceDetails[] = [
     heroImage: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=1200&q=80"
   },
   {
-    id: "s3",
+    id: "s5",
     title: "Graphic Designing & Content Creation",
     slug: "graphic-design-content-creation",
     category: "Branding & Creative",
@@ -104,7 +158,7 @@ export const servicesData: ServiceDetails[] = [
     heroImage: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1200&q=80"
   },
   {
-    id: "s4",
+    id: "s6",
     title: "Video Shoots & Reel Production",
     slug: "video-shoots-reel-production",
     category: "Video Production",
@@ -130,7 +184,7 @@ export const servicesData: ServiceDetails[] = [
     heroImage: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1200&q=80"
   },
   {
-    id: "s5",
+    id: "s7",
     title: "Video Editing & Post-Production",
     slug: "video-editing-post-production",
     category: "Post Production",
@@ -156,7 +210,7 @@ export const servicesData: ServiceDetails[] = [
     heroImage: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80"
   },
   {
-    id: "s6",
+    id: "s8",
     title: "Data Analysis & Business Intelligence",
     slug: "data-analysis-business-intelligence",
     category: "Analytics & Data",
@@ -182,7 +236,7 @@ export const servicesData: ServiceDetails[] = [
     heroImage: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80"
   },
   {
-    id: "s7",
+    id: "s9",
     title: "Wedding Shoots & In-House Event Production",
     slug: "wedding-shoots-event-production",
     category: "Event Production",

@@ -2,6 +2,30 @@ import { ServiceItem } from "@/types";
 
 export const servicesData: ServiceItem[] = [
   {
+    id: "svc-web",
+    slug: "website-design-development",
+    title: "Website Design & Next.js Development (UI/UX)",
+    category: "Engineering",
+    shortDescription: "Bespoke UI/UX design and sub-1s Next.js web applications engineered to convert visitors into customers.",
+    fullDescription: "We engineer zero-compromise digital storefronts and corporate websites. Utilizing Next.js 15, modern UI/UX design systems in Figma, and Tailwind CSS, we build lightning-fast web applications that load in under 1 second, rank supreme on search engines, and maximize conversion rates.",
+    deliverables: ["Modern UI/UX Prototyping", "Next.js 15 Web Engineering", "Sub-1s Page Load Optimization", "SEO Structured Schema & Tracking"],
+    impactMetrics: ["Sub-1s Page Load Speed", "+50% Increase in Conversions", "95+ Lighthouse Score"],
+    idealFor: ["Corporate Enterprises", "Institutions", "Hospitals", "Startups"],
+    iconName: "Code2"
+  },
+  {
+    id: "svc-erp",
+    slug: "custom-software-erp-development",
+    title: "Custom Software & ERP Development",
+    category: "Engineering",
+    shortDescription: "Tailored enterprise ERPs, school/college portals, hospital management systems, and operational dashboards.",
+    fullDescription: "Off-the-shelf software rarely fits specialized organizational workflows. We build tailored ERP systems, student management portals for education institutes, patient & appointment software for clinics and hospitals, billing engines, and real-time operational dashboards for all business sectors.",
+    deliverables: ["Education Institute ERPs", "Hospital & Clinic EMR Systems", "Custom Business Operations ERP", "Role-Based Secure Dashboards"],
+    impactMetrics: ["80% Administrative Time Saved", "Zero Spreadsheet Errors", "Real-Time Centralized Reporting"],
+    idealFor: ["Schools & Colleges", "Hospitals & Clinics", "Real Estate Developers", "Manufacturing"],
+    iconName: "Server"
+  },
+  {
     id: "svc-1",
     slug: "business-growth-consulting",
     title: "Business Growth & Strategy Consultation",
