@@ -6,22 +6,36 @@ import SectionHeader from "@/components/shared/SectionHeader";
 
 const testimonials = [
   {
-    name: "Vikram R. Sharma", role: "Founder & CEO", company: "Aura Fintech Inc.",
-    stat: "Revenue 2.4×",
-    quote: "IMMNAVEED redesigned our complete brand from the ground up. Their understanding of consumer behaviour and positioning is world-class. An immediate asset for our leadership team.",
-    initials: "VS",
+    name: "Suhail Wahid Malik",
+    role: "Managing Director",
+    company: "Cambridge Education Group",
+    stat: "Admissions 3.2×",
+    quote: "IMMNAVEED completely engineered our admissions marketing and web infrastructure. Their understanding of student acquisition funnels and digital positioning in Jammu & Kashmir and abroad is peerless.",
+    initials: "SM",
   },
   {
-    name: "Anjali Mehta", role: "Marketing Director", company: "SaaS Scale Metrics",
+    name: "Sajjad Ahmad Bhat",
+    role: "Managing Partner",
+    company: "Valley Healthcare & Clinics",
     stat: "ROAS 4.8×",
-    quote: "We were burning thousands on generic templates that didn't convert. Naveed's performance funnels completely turned our budget around. The numbers speak for themselves.",
-    initials: "AM",
+    quote: "We used to struggle with scattered marketing and manual appointment scheduling. Naveed's team built our custom clinic portal and paired it with high-converting Meta ads. The results speak for themselves.",
+    initials: "SB",
   },
   {
-    name: "Arjun K. Singhania", role: "Co-Founder", company: "Vantage Real Estate",
-    stat: "+342% Reach",
-    quote: "Naveed is not just a marketer — he is a tech-focused growth strategist. His team built a high-speed property portal and paired it with converting ad strategies. Exceptional.",
-    initials: "AS",
+    name: "Murtaza Mehdi",
+    role: "Director of Operations",
+    company: "Grand Residency & Luxury Events",
+    stat: "+340% Reach",
+    quote: "Their in-house 4K video crew and reel editing team captured our property and wedding events with cinematic perfection. IMMNAVEED is the only agency in Kashmir delivering this level of media quality.",
+    initials: "MM",
+  },
+  {
+    name: "Sairan Mir",
+    role: "Founder & Creative Lead",
+    company: "Mir Lifestyle & Retail",
+    stat: "Revenue 2.6×",
+    quote: "From our brand identity and packaging design to our sub-second Next.js e-commerce storefront, IMMNAVEED executed every deliverable ahead of schedule. An indispensable growth partner.",
+    initials: "SM",
   },
 ];
 
@@ -33,15 +47,15 @@ export default function Testimonials() {
         {/* Section Header with Rating Summary */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <SectionHeader
-            badgeText="Partner Endorsements"
+            badgeText="Verified Partner Endorsements"
             title="Trusted by Forward-"
-            gradientTitle="Thinking Leaders."
-            subtitle="Verified reviews and measurable outcomes from founders, enterprise executives, and marketing directors."
+            gradientTitle="Thinking Leaders & Founders."
+            subtitle="Real outcomes, verified ROAS, and custom software deployments delivered for prominent businesses across Kashmir, India, and worldwide."
             theme="light"
           />
 
           {/* Rating summary pill */}
-          <div className="flex items-center gap-5 bg-white border border-slate-200 rounded-2xl p-4 shadow-sm self-start md:self-auto mb-10 md:mb-14">
+          <div className="flex items-center gap-5 bg-white border border-slate-200 rounded-2xl p-4 shadow-xs self-start md:self-auto mb-10 md:mb-14">
             <div className="text-center">
               <p className="font-display text-2xl font-extrabold text-[#0F172A]">4.9</p>
               <div className="flex gap-0.5 mt-1 justify-center">
@@ -59,43 +73,43 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {testimonials.map((t) => (
             <div
               key={t.name}
-              className="card-white p-7 flex flex-col justify-between"
+              className="card-white p-6 flex flex-col justify-between rounded-3xl border border-slate-200 shadow-xs hover:shadow-xl hover:border-[#14B8C4] transition-all duration-300"
             >
               <div>
                 {/* Stat pill */}
-                <div className="flex items-center justify-between mb-5">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200">
                     <ArrowUpRight className="w-3 h-3" /> {t.stat}
                   </span>
-                  <Quote className="w-6 h-6 text-slate-300" />
+                  <Quote className="w-5 h-5 text-slate-300" />
                 </div>
 
                 {/* Stars */}
-                <div className="flex gap-1 mb-3">
+                <div className="flex gap-0.5 mb-3">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-3.5 h-3.5 text-[#F7931E] fill-[#F7931E]" />
                   ))}
                 </div>
 
                 {/* Quote */}
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal mb-6 italic">
+                <p className="text-xs text-slate-600 leading-relaxed font-normal mb-5 italic line-clamp-4">
                   &ldquo;{t.quote}&rdquo;
                 </p>
               </div>
 
               {/* Author */}
-              <div className="flex items-center gap-3.5 pt-4 border-t border-slate-100">
-                <div className="w-11 h-11 rounded-full bg-[#041E42] text-[#14B8C4] flex items-center justify-center text-xs font-black font-display flex-shrink-0 shadow-sm">
+              <div className="flex items-center gap-3 pt-3 border-t border-slate-100">
+                <div className="w-10 h-10 rounded-full bg-[#041E42] text-[#14B8C4] flex items-center justify-center text-xs font-black font-display flex-shrink-0 shadow-xs">
                   {t.initials}
                 </div>
                 <div>
-                  <p className="font-display text-sm font-bold text-[#0F172A]">{t.name}</p>
-                  <p className="text-[10px] text-slate-400 font-semibold mt-0.5">
+                  <p className="font-display text-xs font-bold text-[#0F172A]">{t.name}</p>
+                  <p className="text-[10px] text-slate-500 font-semibold leading-tight mt-0.5">
                     {t.role}, <span className="text-[#0E8A94] font-bold">{t.company}</span>
                   </p>
                 </div>

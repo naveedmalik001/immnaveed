@@ -111,7 +111,7 @@ export default function Hero() {
                 </div>
 
                 <h3 className="font-display text-xl font-bold text-[#0F172A] leading-snug">
-                  Er. Naveed Malik &amp; Team
+                  IMMNAVEED &amp; Team
                 </h3>
                 <p className="text-xs text-slate-500 leading-relaxed">
                   Combining software architecture, tailored ERP systems, quantitative ad execution, and in-house film production.
