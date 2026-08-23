@@ -17,16 +17,16 @@ export default function ServicesAccordion() {
 
         {/* Section Header */}
         <SectionHeader
-          badgeText="Full-Spectrum Growth & Media"
-          title="Our 7 Core Services Designed for"
-          gradientTitle="Real Business Impact."
-          subtitle="From business model optimization and paid social ad campaigns to in-house 4K video shoots, graphic design, data analysis, and wedding cinematography."
-          actionLink={{ label: "View All 7 Services", href: "/services" }}
+          badgeText="Full-Spectrum Capabilities & Media"
+          title="Our 9 Core Services Designed for"
+          gradientTitle="Real Business Growth."
+          subtitle="From Next.js web applications and specialized ERP software to Meta/Google ads, graphic design, 4K video shoots, and wedding cinematography."
+          actionLink={{ label: "View All 9 Services", href: "/services" }}
           theme="dark"
         />
 
         {/* Services — accordion rows */}
-        <div className="card-navy bg-[#082852]/90 overflow-hidden divide-y divide-slate-700/80 shadow-2xl">
+        <div className="card-navy bg-[#082852]/95 overflow-hidden divide-y divide-slate-700/80 shadow-2xl">
           {servicesData.map((svc, idx) => {
             const isOpen = active === svc.id;
             return (
@@ -55,7 +55,7 @@ export default function ServicesAccordion() {
                     className={`flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center font-bold text-sm transition-all duration-150 ${
                       isOpen
                         ? "bg-[#14B8C4] text-[#031730] shadow-md shadow-[#14B8C4]/30"
-                        : "bg-[#041E42] text-slate-300 border border-slate-700/60 group-hover:bg-[#14B8C4] group-hover:text-[#031730]"
+                        : "bg-[#041E42] text-slate-200 border border-slate-700/60 group-hover:bg-[#14B8C4] group-hover:text-[#031730]"
                     }`}
                   >
                     {isOpen ? "−" : "+"}
@@ -69,10 +69,10 @@ export default function ServicesAccordion() {
                   }`}
                 >
                   <div className="pl-11 grid grid-cols-1 md:grid-cols-2 gap-6 pt-3 border-t border-slate-700/60">
-                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">{svc.content}</p>
+                    <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-normal">{svc.content}</p>
                     <ul className="space-y-2">
                       {svc.features.slice(0, 3).map((b) => (
-                        <li key={b} className="flex items-start gap-2 text-xs font-medium text-slate-200">
+                        <li key={b} className="flex items-start gap-2 text-xs font-medium text-white">
                           <CheckCircle2 className="w-4 h-4 text-[#14B8C4] flex-shrink-0 mt-0.5" />
                           <span>{b}</span>
                         </li>
@@ -83,7 +83,7 @@ export default function ServicesAccordion() {
                     <Link
                       href={`/services/${svc.slug}`}
                       onClick={playClick}
-                      className="btn-orange text-xs py-2 px-4 rounded-xl inline-flex items-center gap-1.5"
+                      className="btn-orange text-xs py-2.5 px-4 rounded-xl inline-flex items-center gap-1.5 font-bold"
                     >
                       <span>Explore Service Details</span>
                       <ArrowRight className="w-3.5 h-3.5" />
