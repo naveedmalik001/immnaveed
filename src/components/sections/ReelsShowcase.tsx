@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ExternalLink, Film, Camera, Sparkles, Filter } from "lucide-react";
+import { ExternalLink, Film, Camera, Sparkles } from "lucide-react";
 import { reelsData, ReelItem } from "@/data/reels-data";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { useSound } from "@/hooks/useSound";
@@ -17,7 +17,15 @@ function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
   );
 }
 
-const categories = ["All", "Reels", "Brand Commercial", "Corporate Video", "Talking Head"];
+const categories = [
+  "All",
+  "Wedding & Events",
+  "Corporate Video",
+  "Talking Head",
+  "Brand Commercial",
+  "Social Media Ad",
+  "Reels",
+];
 
 export default function ReelsShowcase() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -36,7 +44,7 @@ export default function ReelsShowcase() {
           badgeText="Verified Video Production & Reels Portfolio"
           title="Viral Reels, Brand Shoots &"
           gradientTitle="Cinematic Video Portfolio."
-          subtitle="Watch our real video work directly below: viral Instagram reels, corporate promo shoots, talking head founder interviews, and commercial brand productions."
+          subtitle="Watch our real video work directly below: luxury wedding films, corporate promo shoots, talking head founder interviews, and commercial brand productions."
           actionLink={{ label: "Book a Shoot / Video Project", href: "/contact" }}
           theme="light"
         />
@@ -70,7 +78,7 @@ export default function ReelsShowcase() {
               className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
             >
               {/* Card Header */}
-              <div className="p-4 pb-2 flex items-center justify-between border-b border-slate-100">
+              <div className="p-4 pb-2.5 flex items-center justify-between border-b border-slate-100">
                 <span className="badge-teal text-[9px] py-0.5 px-2">
                   {reel.category}
                 </span>
@@ -108,7 +116,7 @@ export default function ReelsShowcase() {
                   </p>
                 </div>
 
-                <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
+                <div className="pt-2.5 border-t border-slate-100 flex items-center justify-between">
                   <div className="flex flex-wrap gap-1">
                     {reel.tags.slice(0, 2).map((t) => (
                       <span key={t} className="text-[9px] font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">
@@ -156,7 +164,7 @@ export default function ReelsShowcase() {
               <span>Book Shoot / Video Project</span>
             </Link>
             <a
-              href="https://wa.me/919018636473?text=Hello%20Er.%20Naveed%20Malik,%20I%20would%20like%20to%20discuss%20a%20video%20shoot%20or%20reel%20editing%20project."
+              href="https://wa.me/919018636473?text=Hello%20Er.%20Naveed%20Malik,%20I%20would%20like%20to%20discuss%20a%20wedding%20shoot%20or%20video%20production%20project."
               target="_blank"
               rel="noopener noreferrer"
               className="btn-whatsapp text-xs py-3 px-6 rounded-xl font-bold text-center"
