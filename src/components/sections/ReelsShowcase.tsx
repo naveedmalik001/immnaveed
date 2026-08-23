@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ExternalLink, Film, Camera, Sparkles } from "lucide-react";
+import { ExternalLink, Film, Camera, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
 import { reelsData, ReelItem } from "@/data/reels-data";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { useSound } from "@/hooks/useSound";
@@ -29,11 +29,15 @@ const categories = [
 
 export default function ReelsShowcase() {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [showAll, setShowAll] = useState(false);
   const { playClick, playHover } = useSound();
 
   const filteredReels = activeCategory === "All"
     ? reelsData
     : reelsData.filter((r) => r.category === activeCategory);
+
+  // Show 4 reels initially if showAll is false, or all reels if showAll is true
+  const displayedReels = showAll ? filteredReels : filteredReels.slice(0, 4);
 
   return (
     <section id="reels-portfolio" className="section-pad bg-[#F8FAFC] font-sans border-b border-slate-200">
@@ -57,6 +61,7 @@ export default function ReelsShowcase() {
               onClick={() => {
                 playClick();
                 setActiveCategory(cat);
+                setShowAll(false);
               }}
               onMouseEnter={playHover}
               className={`flex-shrink-0 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
@@ -72,7 +77,7 @@ export default function ReelsShowcase() {
 
         {/* Reels Live Grid — 4 Columns on desktop, 2 on tablet, 1 on mobile */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filteredReels.map((reel) => (
+          {displayedReels.map((reel) => (
             <div
               key={reel.id}
               className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
@@ -138,6 +143,33 @@ export default function ReelsShowcase() {
             </div>
           ))}
         </div>
+
+        {/* View More / View Less Toggle Button */}
+        {filteredReels.length > 4 && (
+          <div className="mt-10 text-center">
+            <button
+              onClick={() => {
+                playClick();
+                setShowAll(!showAll);
+              }}
+              onMouseEnter={playHover}
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl bg-white border border-slate-300 text-[#0F172A] hover:bg-[#041E42] hover:text-white hover:border-[#041E42] transition-all duration-200 text-xs font-bold uppercase tracking-wider shadow-sm cursor-pointer"
+            >
+              {showAll ? (
+                <>
+                  <span>Show Fewer Reels</span>
+                  <ChevronUp className="w-4 h-4" />
+                </>
+              ) : (
+                <>
+                  <Film className="w-4 h-4 text-[#0E8A94]" />
+                  <span>View More Reels &amp; Shoots ({filteredReels.length - 4} More)</span>
+                  <ChevronDown className="w-4 h-4" />
+                </>
+              )}
+            </button>
+          </div>
+        )}
 
         {/* Shoot & Video Production Call to Action Box */}
         <div className="mt-14 p-8 rounded-3xl bg-gradient-to-r from-[#041E42] to-[#082852] text-white border border-slate-700/80 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
